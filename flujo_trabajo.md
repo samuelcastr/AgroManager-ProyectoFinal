@@ -518,3 +518,4 @@ git commit -m "feat(cultivos): add CicloSiembra model & serializer #14"
 ```
 [APP Cultivos] – CRUD CicloSiembra + endpoint rendimiento_estimado
 ```
+
