@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Build paths istrarla einside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -37,7 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'apps.inventario',
 ]
+
+# Optional apps (only enable if installed in the environment)
+try:
+    import importlib
+
+    if importlib.util.find_spec('django_filters'):
+        INSTALLED_APPS.insert(INSTALLED_APPS.index('apps.inventario'), 'django_filters')
+except Exception:
+    # Keep going if optional packages are missing (tests/environment may be minimal)
+    pass
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
