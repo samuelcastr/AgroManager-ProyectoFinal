@@ -498,24 +498,4 @@ Relaciones:
 
 ---
 
-# ✅ Plantillas rápidas (copiables)
-
-## Branch naming
-
-```
-<user>/<short-desc>-<issue#>
-ej: maria/cultivos-crud-14
-```
-
-## Commit ejemplo
-
-```
-git commit -m "feat(cultivos): add CicloSiembra model & serializer #14"
-```
-
-## PR title ejemplo
-
-```
-[APP Cultivos] – CRUD CicloSiembra + endpoint rendimiento_estimado
-```
 
