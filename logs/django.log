@@ -306,3 +306,83 @@ WARNING 2025-12-05 18:53:07,813 log 17516 16028 Bad Request: /api/auth/register/
 WARNING 2025-12-05 18:53:07,813 basehttp 17516 16028 "POST /api/auth/register/ HTTP/1.1" 400 10700
 INFO 2025-12-05 18:54:48,145 views 22656 24656 Nuevo usuario registrado: newuser
 INFO 2025-12-05 18:54:59,628 autoreload 10312 7104 Watching for file changes with StatReloader
+WARNING 2025-12-05 18:56:16,824 log 10312 11744 Not Found: /
+WARNING 2025-12-05 18:56:16,825 basehttp 10312 11744 "GET / HTTP/1.1" 404 3283
+INFO 2025-12-05 18:56:33,819 views 10312 25664 Nuevo usuario registrado: juan
+INFO 2025-12-05 18:56:33,879 basehttp 10312 25664 "POST /api/auth/register/ HTTP/1.1" 201 11003
+INFO 2025-12-05 18:56:33,904 basehttp 10312 25664 "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+ERROR 2025-12-05 18:57:32,234 exceptions 10312 1748 Error 405 en TokenObtainPairView
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 167, in http_method_not_allowed
+    raise exceptions.MethodNotAllowed(request.method)
+rest_framework.exceptions.MethodNotAllowed: Método "GET" no permitido.
+WARNING 2025-12-05 18:57:32,247 log 10312 1748 Method Not Allowed: /api/auth/login/
+WARNING 2025-12-05 18:57:32,247 basehttp 10312 1748 "GET /api/auth/login/ HTTP/1.1" 405 12441
+INFO 2025-12-05 18:57:32,268 basehttp 10312 1748 "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+INFO 2025-12-05 18:57:32,268 basehttp 10312 19316 "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+INFO 2025-12-05 18:57:32,272 basehttp 10312 22740 "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+INFO 2025-12-05 18:57:32,272 basehttp 10312 28868 "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+INFO 2025-12-05 18:57:32,277 basehttp 10312 1748 "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+INFO 2025-12-05 18:57:32,277 basehttp 10312 11196 "GET /static/rest_framework/js/jquery-3.5.1.min.js HTTP/1.1" 304 0
+INFO 2025-12-05 18:57:32,277 basehttp 10312 19316 "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+INFO 2025-12-05 18:57:32,280 basehttp 10312 28868 "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+INFO 2025-12-05 18:57:32,280 basehttp 10312 22740 "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+INFO 2025-12-05 18:57:32,280 basehttp 10312 8784 "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+ERROR 2025-12-05 18:58:10,740 exceptions 10312 17016 Error 401 en TokenObtainPairView
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\views.py", line 44, in post
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 429, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 73, in validate
+    data = super().validate(attrs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 57, in validate
+    raise exceptions.AuthenticationFailed(
+rest_framework.exceptions.AuthenticationFailed: La combinación de credenciales no tiene una cuenta activa
+WARNING 2025-12-05 18:58:10,745 log 10312 17016 Unauthorized: /api/auth/login/
+WARNING 2025-12-05 18:58:10,745 basehttp 10312 17016 "POST /api/auth/login/ HTTP/1.1" 401 12387
+ERROR 2025-12-05 18:59:04,159 exceptions 10312 6668 Error 401 en TokenObtainPairView
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\views.py", line 44, in post
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 429, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 73, in validate
+    data = super().validate(attrs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 57, in validate
+    raise exceptions.AuthenticationFailed(
+rest_framework.exceptions.AuthenticationFailed: La combinación de credenciales no tiene una cuenta activa
+WARNING 2025-12-05 18:59:04,165 log 10312 6668 Unauthorized: /api/auth/login/
+WARNING 2025-12-05 18:59:04,167 basehttp 10312 6668 "POST /api/auth/login/ HTTP/1.1" 401 12387
+INFO 2025-12-05 18:59:38,488 basehttp 10312 25308 "POST /api/auth/login/ HTTP/1.1" 200 12883
+ERROR 2025-12-05 19:05:33,915 exceptions 10312 22532 Error 405 en register
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 167, in http_method_not_allowed
+    raise exceptions.MethodNotAllowed(request.method)
+rest_framework.exceptions.MethodNotAllowed: Método "GET" no permitido.
+WARNING 2025-12-05 19:05:34,009 log 10312 22532 Method Not Allowed: /api/auth/register/
+WARNING 2025-12-05 19:05:34,014 basehttp 10312 22532 "GET /api/auth/register/ HTTP/1.1" 405 10719
+INFO 2025-12-05 19:10:25,315 autoreload 10312 7104 C:\Users\samue\Documents\agromanager\config\settings\dev.py changed, reloading.
+INFO 2025-12-05 19:10:27,096 autoreload 29300 25664 Watching for file changes with StatReloader
