@@ -7,4 +7,5 @@ router.register(r'cultivos', CultivoViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('api/cultivos/', include(router.urls)),
 ]

@@ -4,12 +4,15 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Cultivo, CicloSiembra
 from .serializers import CultivoSerializer, CicloSerializer
 
 
 class CultivoViewSet(viewsets.ModelViewSet):
+    permission_classes = []
+    
     queryset = Cultivo.objects.all().order_by('-created_at')
     serializer_class = CultivoSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
