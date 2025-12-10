@@ -12,6 +12,7 @@ from .serializers import CultivoSerializer, CicloSerializer
 
 class TiposViewSet(viewsets.ViewSet):
     """ViewSet para retornar tipos de cultivos disponibles"""
+    permission_classes = [IsAuthenticated]
     
     def list(self, request):
         tipos = Cultivo.TIPOS_CULTIVO
@@ -19,7 +20,7 @@ class TiposViewSet(viewsets.ViewSet):
 
 
 class CultivoViewSet(viewsets.ModelViewSet):
-    permission_classes = []
+    permission_classes = [IsAuthenticated]
     
     queryset = Cultivo.objects.all().order_by('-created_at')
     serializer_class = CultivoSerializer

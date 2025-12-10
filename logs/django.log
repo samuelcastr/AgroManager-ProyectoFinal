@@ -1089,3 +1089,153 @@ INFO 2025-12-10 16:36:11,516 autoreload 20048 8352 C:\Users\samue\Documents\agro
 INFO 2025-12-10 16:36:12,179 autoreload 20800 9492 Watching for file changes with StatReloader
 INFO 2025-12-10 16:36:12,301 autoreload 23464 18660 Watching for file changes with StatReloader
 INFO 2025-12-10 16:36:21,638 autoreload 26060 4752 Watching for file changes with StatReloader
+INFO 2025-12-10 16:36:44,035 basehttp 26060 25552 "POST /api/auth/login/ HTTP/1.1" 200 483
+INFO 2025-12-10 16:36:46,091 basehttp 26060 4664 "GET /api/core/health/ HTTP/1.1" 200 97
+INFO 2025-12-10 16:36:48,161 basehttp 26060 18272 "GET /api/core/profiles/ HTTP/1.1" 200 1179
+INFO 2025-12-10 16:36:50,244 basehttp 26060 25988 "GET /api/cultivos/ HTTP/1.1" 200 468
+INFO 2025-12-10 16:36:52,312 basehttp 26060 15880 "GET /api/cultivos/tipos/ HTTP/1.1" 200 197
+INFO 2025-12-10 16:36:54,412 basehttp 26060 18032 "GET /api/inventario/insumos/ HTTP/1.1" 200 52
+INFO 2025-12-10 16:36:56,475 basehttp 26060 17644 "GET /api/inventario/lotes/ HTTP/1.1" 200 52
+INFO 2025-12-10 16:36:58,553 basehttp 26060 4624 "GET /api/inventario/movimientos/ HTTP/1.1" 200 52
+INFO 2025-12-10 16:37:00,615 basehttp 26060 14416 "GET /api/inventario/alertas-stock/ HTTP/1.1" 200 2
+INFO 2025-12-10 16:37:02,687 basehttp 26060 11568 "GET /api/sensores/ HTTP/1.1" 200 169
+INFO 2025-12-10 16:37:04,744 basehttp 26060 18048 "GET /api/sensores/tipos/ HTTP/1.1" 200 113
+INFO 2025-12-10 16:37:06,806 basehttp 26060 28504 "GET /api/sensores/lecturas/ HTTP/1.1" 200 52
+INFO 2025-12-10 16:37:08,870 basehttp 26060 10200 "GET /swagger/ HTTP/1.1" 200 2162
+INFO 2025-12-10 16:37:10,927 basehttp 26060 12268 "GET /redoc/ HTTP/1.1" 200 932
+INFO 2025-12-10 16:37:13,072 basehttp 26060 19048 "GET /swagger.json HTTP/1.1" 200 49431
+WARNING 2025-12-10 16:38:28,724 log 26060 25616 Not Found: /
+WARNING 2025-12-10 16:38:28,726 basehttp 26060 25616 "GET / HTTP/1.1" 404 3624
+WARNING 2025-12-10 16:38:42,657 log 26060 9356 Not Found: /swgger
+WARNING 2025-12-10 16:38:42,658 basehttp 26060 9356 "GET /swgger HTTP/1.1" 404 3660
+WARNING 2025-12-10 16:38:49,389 log 26060 9356 Not Found: /swggaer
+WARNING 2025-12-10 16:38:49,390 basehttp 26060 9356 "GET /swggaer HTTP/1.1" 404 3663
+INFO 2025-12-10 16:38:57,787 basehttp 26060 16532 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-10 16:38:57,812 basehttp 26060 14888 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+INFO 2025-12-10 16:38:57,812 basehttp 26060 16532 "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+INFO 2025-12-10 16:38:57,813 basehttp 26060 12196 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+INFO 2025-12-10 16:38:57,814 basehttp 26060 23960 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 16:38:57,815 basehttp 26060 408 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+INFO 2025-12-10 16:38:57,817 basehttp 26060 17648 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 16:38:57,819 basehttp 26060 14888 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+INFO 2025-12-10 16:38:58,121 basehttp 26060 14888 "GET /swagger/?format=openapi HTTP/1.1" 200 41239
+INFO 2025-12-10 16:50:08,435 autoreload 26060 4752 C:\Users\samue\Documents\agromanager\apps\sensores\models.py changed, reloading.
+INFO 2025-12-10 16:50:09,600 autoreload 26156 3060 Watching for file changes with StatReloader
+INFO 2025-12-10 16:51:07,335 autoreload 26156 3060 C:\Users\samue\Documents\agromanager\apps\cultivos\views.py changed, reloading.
+INFO 2025-12-10 16:51:08,095 autoreload 23600 26116 Watching for file changes with StatReloader
+INFO 2025-12-10 16:51:10,818 autoreload 23600 26116 C:\Users\samue\Documents\agromanager\apps\cultivos\views.py changed, reloading.
+INFO 2025-12-10 16:51:12,064 autoreload 17036 13244 Watching for file changes with StatReloader
+INFO 2025-12-10 16:51:15,783 autoreload 17036 13244 C:\Users\samue\Documents\agromanager\apps\inventario\views.py changed, reloading.
+INFO 2025-12-10 16:51:17,064 autoreload 16804 11988 Watching for file changes with StatReloader
+INFO 2025-12-10 16:51:23,102 autoreload 16804 11988 C:\Users\samue\Documents\agromanager\apps\inventario\views.py changed, reloading.
+INFO 2025-12-10 16:51:24,272 autoreload 12552 20024 Watching for file changes with StatReloader
+INFO 2025-12-10 16:51:28,040 autoreload 12552 20024 C:\Users\samue\Documents\agromanager\apps\inventario\views.py changed, reloading.
+INFO 2025-12-10 16:51:29,414 autoreload 17440 5404 Watching for file changes with StatReloader
+INFO 2025-12-10 16:51:33,240 autoreload 17440 5404 C:\Users\samue\Documents\agromanager\apps\inventario\views.py changed, reloading.
+INFO 2025-12-10 16:51:34,391 autoreload 27412 29076 Watching for file changes with StatReloader
+INFO 2025-12-10 16:51:36,873 autoreload 27412 29076 C:\Users\samue\Documents\agromanager\apps\sensores\views.py changed, reloading.
+INFO 2025-12-10 16:51:38,028 autoreload 17324 22332 Watching for file changes with StatReloader
+INFO 2025-12-10 16:51:41,709 autoreload 17324 22332 C:\Users\samue\Documents\agromanager\apps\sensores\views.py changed, reloading.
+INFO 2025-12-10 16:51:42,969 autoreload 9016 25420 Watching for file changes with StatReloader
+ERROR 2025-12-10 16:51:56,321 exceptions 9016 21152 Error 401 en CultivoViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
+    raise exceptions.NotAuthenticated()
+rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticación no se proveyeron.
+WARNING 2025-12-10 16:51:56,322 log 9016 21152 Unauthorized: /api/cultivos/
+WARNING 2025-12-10 16:51:56,323 basehttp 9016 21152 "GET /api/cultivos/ HTTP/1.1" 401 65
+ERROR 2025-12-10 16:51:58,359 exceptions 9016 1412 Error 401 en TiposViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
+    raise exceptions.NotAuthenticated()
+rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticación no se proveyeron.
+WARNING 2025-12-10 16:51:58,361 log 9016 1412 Unauthorized: /api/cultivos/tipos/
+WARNING 2025-12-10 16:51:58,362 basehttp 9016 1412 "GET /api/cultivos/tipos/ HTTP/1.1" 401 65
+ERROR 2025-12-10 16:52:00,399 exceptions 9016 23604 Error 401 en InsumoViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
+    raise exceptions.NotAuthenticated()
+rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticación no se proveyeron.
+WARNING 2025-12-10 16:52:00,400 log 9016 23604 Unauthorized: /api/inventario/insumos/
+WARNING 2025-12-10 16:52:00,401 basehttp 9016 23604 "GET /api/inventario/insumos/ HTTP/1.1" 401 65
+ERROR 2025-12-10 16:52:02,445 exceptions 9016 19888 Error 401 en APIRootView
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
+    raise exceptions.NotAuthenticated()
+rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticación no se proveyeron.
+WARNING 2025-12-10 16:52:02,447 log 9016 19888 Unauthorized: /api/sensores/
+WARNING 2025-12-10 16:52:02,449 basehttp 9016 19888 "GET /api/sensores/ HTTP/1.1" 401 65
+ERROR 2025-12-10 16:52:04,507 exceptions 9016 16532 Error 401 en TiposViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
+    raise exceptions.NotAuthenticated()
+rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticación no se proveyeron.
+WARNING 2025-12-10 16:52:04,510 log 9016 16532 Unauthorized: /api/sensores/tipos/
+WARNING 2025-12-10 16:52:04,513 basehttp 9016 16532 "GET /api/sensores/tipos/ HTTP/1.1" 401 65
+INFO 2025-12-10 16:52:06,974 basehttp 9016 28724 "POST /api/auth/login/ HTTP/1.1" 200 483
+INFO 2025-12-10 16:52:09,038 basehttp 9016 10232 "GET /api/cultivos/ HTTP/1.1" 200 468
+INFO 2025-12-10 16:52:11,075 basehttp 9016 18388 "GET /api/cultivos/tipos/ HTTP/1.1" 200 197
+INFO 2025-12-10 16:52:13,133 basehttp 9016 22728 "GET /api/inventario/insumos/ HTTP/1.1" 200 52
+INFO 2025-12-10 16:52:15,180 basehttp 9016 10744 "GET /api/sensores/ HTTP/1.1" 200 169
+INFO 2025-12-10 16:52:17,219 basehttp 9016 1376 "GET /api/sensores/tipos/ HTTP/1.1" 200 113
+INFO 2025-12-10 16:55:45,953 autoreload 9016 25420 C:\Users\samue\Documents\agromanager\apps\cultivos\serializers.py changed, reloading.
+INFO 2025-12-10 16:55:47,802 autoreload 8248 1840 Watching for file changes with StatReloader
+INFO 2025-12-10 16:56:04,372 autoreload 8248 1840 C:\Users\samue\Documents\agromanager\apps\cultivos\serializers.py changed, reloading.
+INFO 2025-12-10 16:56:05,598 autoreload 19872 17632 Watching for file changes with StatReloader
+INFO 2025-12-10 16:56:11,611 autoreload 19872 17632 C:\Users\samue\Documents\agromanager\apps\inventario\serializers.py changed, reloading.
+INFO 2025-12-10 16:56:12,764 autoreload 25488 15716 Watching for file changes with StatReloader
+INFO 2025-12-10 16:56:16,475 autoreload 25488 15716 C:\Users\samue\Documents\agromanager\apps\sensores\serializers.py changed, reloading.
+INFO 2025-12-10 16:56:17,244 autoreload 27248 24280 Watching for file changes with StatReloader
+INFO 2025-12-10 16:56:28,902 autoreload 27248 24280 C:\Users\samue\Documents\agromanager\apps\inventario\serializers.py changed, reloading.
+INFO 2025-12-10 16:56:30,365 autoreload 21160 4688 Watching for file changes with StatReloader
+INFO 2025-12-10 16:56:41,526 autoreload 1972 17364 Watching for file changes with StatReloader
+INFO 2025-12-10 16:57:07,501 basehttp 1972 14328 "POST /api/auth/login/ HTTP/1.1" 200 483
+INFO 2025-12-10 16:57:09,601 basehttp 1972 22788 "GET /swagger.json HTTP/1.1" 200 51194
+INFO 2025-12-10 16:57:48,801 basehttp 1972 5236 "POST /api/auth/login/ HTTP/1.1" 200 483
+INFO 2025-12-10 16:57:50,873 basehttp 1972 11180 "GET /swagger/ HTTP/1.1" 200 2162
+INFO 2025-12-10 16:57:52,960 basehttp 1972 19412 "GET /swagger.json HTTP/1.1" 200 51194
+INFO 2025-12-10 16:58:14,526 basehttp 1972 16600 "POST /api/auth/login/ HTTP/1.1" 200 483
+INFO 2025-12-10 16:58:16,572 basehttp 1972 9928 "POST /api/cultivos/ HTTP/1.1" 201 217
+INFO 2025-12-10 16:58:18,627 basehttp 1972 25212 "POST /api/inventario/insumos/ HTTP/1.1" 201 75
+INFO 2025-12-10 16:58:20,408 autoreload 1972 17364 C:\Users\samue\Documents\agromanager\apps\sensores\serializers.py changed, reloading.
+INFO 2025-12-10 16:58:21,202 autoreload 23348 15792 Watching for file changes with StatReloader
+ERROR 2025-12-10 16:58:21,720 exceptions 23348 16328 Error 405 en APIRootView
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 167, in http_method_not_allowed
+    raise exceptions.MethodNotAllowed(request.method)
+rest_framework.exceptions.MethodNotAllowed: Método "POST" no permitido.
+WARNING 2025-12-10 16:58:21,722 log 23348 16328 Method Not Allowed: /api/sensores/
+WARNING 2025-12-10 16:58:21,723 basehttp 23348 16328 "POST /api/sensores/ HTTP/1.1" 405 43

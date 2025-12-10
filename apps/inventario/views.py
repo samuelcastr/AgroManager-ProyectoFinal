@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Insumo, Lote, MovimientoStock, registrar_salida_stock
 from .serializers import InsumoAlertSerializer, AjusteMasivoSerializer, MovimientoStockSerializer, InsumoSerializer, LoteSerializer
@@ -13,6 +14,7 @@ from .serializers import InsumoAlertSerializer, AjusteMasivoSerializer, Movimien
 
 class AlertasStockAPIView(APIView):
 	"""Retorna insumos cuyo stock total está por debajo o igual al stock mínimo."""
+	permission_classes = [IsAuthenticated]
 
 	def get(self, request):
 		insumos = Insumo.objects.all()
@@ -39,6 +41,7 @@ class AjusteMasivoAPIView(APIView):
 	- SALIDA: utiliza `registrar_salida_stock` (FIFO) y registra MovimientoStock
 	- AJUSTE: registra un MovimientoStock y ajusta el primer lote disponible (si es negativo)
 	"""
+	permission_classes = [IsAuthenticated]
 
 	def post(self, request):
 		serializer = AjusteMasivoSerializer(data=request.data)
@@ -99,15 +102,18 @@ class AjusteMasivoAPIView(APIView):
 
 # ViewSets para los modelos principales
 class InsumoViewSet(viewsets.ModelViewSet):
+	permission_classes = [IsAuthenticated]
 	queryset = Insumo.objects.all()
 	serializer_class = InsumoSerializer
 
 
 class LoteViewSet(viewsets.ModelViewSet):
+	permission_classes = [IsAuthenticated]
 	queryset = Lote.objects.all()
 	serializer_class = LoteSerializer
 
 
 class MovimientoStockViewSet(viewsets.ModelViewSet):
+	permission_classes = [IsAuthenticated]
 	queryset = MovimientoStock.objects.all()
 	serializer_class = MovimientoStockSerializer

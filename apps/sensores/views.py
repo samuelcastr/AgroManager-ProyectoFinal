@@ -1,6 +1,7 @@
 from rest_framework import viewsets, mixins
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Sensor, LecturaSensor
 from .serializers import SensorSerializer, LecturaSerializer
@@ -8,6 +9,7 @@ from .serializers import SensorSerializer, LecturaSerializer
 
 class TiposViewSet(viewsets.ViewSet):
 	"""ViewSet para retornar tipos de sensores disponibles"""
+	permission_classes = [IsAuthenticated]
 	
 	def list(self, request):
 		tipos = Sensor.TIPOS_SENSOR
@@ -15,6 +17,7 @@ class TiposViewSet(viewsets.ViewSet):
 
 
 class SensorViewSet(viewsets.ModelViewSet):
+	permission_classes = [IsAuthenticated]
 	queryset = Sensor.objects.all()
 	serializer_class = SensorSerializer
 
@@ -27,6 +30,7 @@ class SensorViewSet(viewsets.ModelViewSet):
 
 
 class LecturaViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet):
+	permission_classes = [IsAuthenticated]
 	queryset = LecturaSensor.objects.all()
 	serializer_class = LecturaSerializer
 
