@@ -16,8 +16,37 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from config.swagger import schema_view
+
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
+from apps.core.views import register, request_password_reset, confirm_password_reset
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('sensores.urls')),
+    # Admin
+    path("admin/", admin.site.urls),
+
+    # Core API
+    path("api/core/", include("apps.core.urls")),
+
+    # Autenticación JWT
+    path("api/auth/login/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/auth/register/", register, name="register"),
+    path("api/auth/password-reset/", request_password_reset, name="password_reset_request"),
+    path("api/auth/password-reset-confirm/", confirm_password_reset, name="password_reset_confirm"),
+    path('inventario/', include('apps.inventario.urls')),
+    path('api/inventario/', include('apps.inventario.urls')),
+    path('api/cultivos', include('cultivos.urls')),
+    path('api/sensores', include('sensores.urls')),
+
+    # Swagger
+    path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="swagger-ui"),
+    path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="redoc-ui"),
+    path("swagger.json", schema_view.without_ui(cache_timeout=0), name="schema-json"),
+
 ]
+
