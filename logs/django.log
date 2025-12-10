@@ -1239,3 +1239,403 @@ Traceback (most recent call last):
 rest_framework.exceptions.MethodNotAllowed: Método "POST" no permitido.
 WARNING 2025-12-10 16:58:21,722 log 23348 16328 Method Not Allowed: /api/sensores/
 WARNING 2025-12-10 16:58:21,723 basehttp 23348 16328 "POST /api/sensores/ HTTP/1.1" 405 43
+INFO 2025-12-10 16:59:30,081 basehttp 23348 9240 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-10 16:59:30,115 basehttp 23348 21956 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+INFO 2025-12-10 16:59:30,116 basehttp 23348 9240 "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+INFO 2025-12-10 16:59:30,119 basehttp 23348 9444 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+INFO 2025-12-10 16:59:30,120 basehttp 23348 12520 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+INFO 2025-12-10 16:59:30,121 basehttp 23348 9696 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 16:59:30,123 basehttp 23348 21956 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+INFO 2025-12-10 16:59:30,123 basehttp 23348 26192 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 16:59:30,379 basehttp 23348 21956 "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+INFO 2025-12-10 16:59:30,380 basehttp 23348 26192 "GET /swagger/?format=openapi HTTP/1.1" 200 42902
+INFO 2025-12-10 16:59:42,341 basehttp 23348 13592 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-10 16:59:42,478 basehttp 23348 13592 "GET /swagger/?format=openapi HTTP/1.1" 200 42902
+WARNING 2025-12-10 16:59:56,131 log 23348 17160 Not Found: /
+WARNING 2025-12-10 16:59:56,131 basehttp 23348 17160 "GET / HTTP/1.1" 404 3624
+INFO 2025-12-10 17:00:04,446 basehttp 23348 7076 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-10 17:00:04,620 basehttp 23348 7076 "GET /swagger/?format=openapi HTTP/1.1" 200 42902
+INFO 2025-12-10 17:00:12,550 basehttp 23348 18108 "GET /api/cultivos/ HTTP/1.1" 200 686
+INFO 2025-12-10 17:00:48,052 basehttp 23348 20644 "GET /api/auth/register/ HTTP/1.1" 200 177
+INFO 2025-12-10 17:00:50,262 basehttp 23348 20644 "GET /api/auth/register/ HTTP/1.1" 200 177
+ERROR 2025-12-10 17:01:07,871 exceptions 23348 28836 Error 401 en TokenObtainPairView
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\views.py", line 44, in post
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 429, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 73, in validate
+    data = super().validate(attrs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 57, in validate
+    raise exceptions.AuthenticationFailed(
+rest_framework.exceptions.AuthenticationFailed: La combinación de credenciales no tiene una cuenta activa
+WARNING 2025-12-10 17:01:07,879 log 23348 28836 Unauthorized: /api/auth/login/
+WARNING 2025-12-10 17:01:07,880 basehttp 23348 28836 "POST /api/auth/login/ HTTP/1.1" 401 71
+ERROR 2025-12-10 17:01:11,341 exceptions 23348 28836 Error 401 en TokenObtainPairView
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\views.py", line 44, in post
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 429, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 73, in validate
+    data = super().validate(attrs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 57, in validate
+    raise exceptions.AuthenticationFailed(
+rest_framework.exceptions.AuthenticationFailed: La combinación de credenciales no tiene una cuenta activa
+WARNING 2025-12-10 17:01:11,343 log 23348 28836 Unauthorized: /api/auth/login/
+WARNING 2025-12-10 17:01:11,345 basehttp 23348 28836 "POST /api/auth/login/ HTTP/1.1" 401 71
+ERROR 2025-12-10 17:01:23,021 exceptions 23348 17848 Error 401 en TokenObtainPairView
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\views.py", line 44, in post
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 429, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 73, in validate
+    data = super().validate(attrs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 57, in validate
+    raise exceptions.AuthenticationFailed(
+rest_framework.exceptions.AuthenticationFailed: La combinación de credenciales no tiene una cuenta activa
+WARNING 2025-12-10 17:01:23,023 log 23348 17848 Unauthorized: /api/auth/login/
+WARNING 2025-12-10 17:01:23,025 basehttp 23348 17848 "POST /api/auth/login/ HTTP/1.1" 401 71
+INFO 2025-12-10 17:01:33,943 basehttp 23348 10856 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-10 17:01:34,117 basehttp 23348 10856 "GET /swagger/?format=openapi HTTP/1.1" 200 42902
+INFO 2025-12-10 17:01:37,977 basehttp 23348 10856 "GET /api/auth/register/ HTTP/1.1" 200 177
+WARNING 2025-12-10 17:02:05,356 log 23348 12788 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:02:05,356 basehttp 23348 12788 "POST /api/auth/register/ HTTP/1.1" 400 94
+INFO 2025-12-10 17:02:15,913 basehttp 23348 17636 "POST /api/auth/login/ HTTP/1.1" 200 483
+INFO 2025-12-10 17:02:17,964 basehttp 23348 25864 "GET /swagger/ HTTP/1.1" 200 2162
+INFO 2025-12-10 17:02:20,012 basehttp 23348 17364 "GET /redoc/ HTTP/1.1" 200 932
+INFO 2025-12-10 17:02:22,206 basehttp 23348 11092 "GET /swagger.json HTTP/1.1" 200 51194
+WARNING 2025-12-10 17:03:20,007 log 23348 28532 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:03:20,008 basehttp 23348 28532 "POST /api/auth/register/ HTTP/1.1" 400 253
+WARNING 2025-12-10 17:03:22,156 log 23348 4240 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:03:22,158 basehttp 23348 4240 "POST /api/auth/register/ HTTP/1.1" 400 253
+WARNING 2025-12-10 17:03:22,783 log 23348 4240 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:03:22,783 basehttp 23348 4240 "POST /api/auth/register/ HTTP/1.1" 400 253
+INFO 2025-12-10 17:04:14,094 views 23348 3312 Nuevo usuario registrado: samuel_castro
+INFO 2025-12-10 17:04:14,095 basehttp 23348 3312 "POST /api/auth/register/ HTTP/1.1" 201 165
+WARNING 2025-12-10 17:04:36,567 log 23348 1836 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:04:36,568 basehttp 23348 1836 "POST /api/auth/register/ HTTP/1.1" 400 183
+WARNING 2025-12-10 17:04:53,896 log 23348 1836 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:04:53,896 basehttp 23348 1836 "POST /api/auth/register/ HTTP/1.1" 400 106
+WARNING 2025-12-10 17:04:54,645 log 23348 1836 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:04:54,646 basehttp 23348 1836 "POST /api/auth/register/ HTTP/1.1" 400 106
+WARNING 2025-12-10 17:05:37,390 log 23348 21988 Not Found: /auth/register
+WARNING 2025-12-10 17:05:37,392 basehttp 23348 21988 "GET /auth/register HTTP/1.1" 404 3681
+INFO 2025-12-10 17:05:44,403 autoreload 23348 15792 C:\Users\samue\Documents\agromanager\apps\core\serializers.py changed, reloading.
+INFO 2025-12-10 17:05:46,345 autoreload 27220 14872 Watching for file changes with StatReloader
+INFO 2025-12-10 17:05:47,290 basehttp 27220 12804 "GET /api/auth/register HTTP/1.1" 301 0
+INFO 2025-12-10 17:05:47,596 basehttp 27220 14644 "GET /api/auth/register/ HTTP/1.1" 200 12122
+INFO 2025-12-10 17:05:47,612 basehttp 27220 14644 "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+INFO 2025-12-10 17:05:47,617 basehttp 27220 27876 "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+INFO 2025-12-10 17:05:47,621 basehttp 27220 23020 "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+INFO 2025-12-10 17:05:47,626 basehttp 27220 27100 "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+INFO 2025-12-10 17:05:47,628 basehttp 27220 14644 "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+INFO 2025-12-10 17:05:47,630 basehttp 27220 10444 "GET /static/rest_framework/js/jquery-3.5.1.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 17:05:47,631 basehttp 27220 18464 "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+INFO 2025-12-10 17:05:47,631 basehttp 27220 23020 "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+INFO 2025-12-10 17:05:47,631 basehttp 27220 27876 "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 17:05:47,636 basehttp 27220 27100 "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+INFO 2025-12-10 17:05:47,670 basehttp 27220 27100 "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+WARNING 2025-12-10 17:06:02,165 log 27220 2024 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:06:02,166 basehttp 27220 2024 "POST /api/auth/register/ HTTP/1.1" 400 71
+WARNING 2025-12-10 17:06:04,223 log 27220 26028 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:06:04,225 basehttp 27220 26028 "POST /api/auth/register/ HTTP/1.1" 400 145
+WARNING 2025-12-10 17:06:06,282 log 27220 5448 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:06:06,283 basehttp 27220 5448 "POST /api/auth/register/ HTTP/1.1" 400 340
+WARNING 2025-12-10 17:06:08,343 log 27220 11252 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:06:08,344 basehttp 27220 11252 "POST /api/auth/register/ HTTP/1.1" 400 119
+WARNING 2025-12-10 17:06:10,399 log 27220 2560 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:06:10,400 basehttp 27220 2560 "POST /api/auth/register/ HTTP/1.1" 400 79
+WARNING 2025-12-10 17:06:12,438 log 27220 25220 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:06:12,439 basehttp 27220 25220 "POST /api/auth/register/ HTTP/1.1" 400 75
+WARNING 2025-12-10 17:06:14,490 log 27220 15088 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:06:14,493 basehttp 27220 15088 "POST /api/auth/register/ HTTP/1.1" 400 124
+WARNING 2025-12-10 17:06:16,542 log 27220 21116 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:06:16,543 basehttp 27220 21116 "POST /api/auth/register/ HTTP/1.1" 400 84
+WARNING 2025-12-10 17:06:18,601 log 27220 18880 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:06:18,602 basehttp 27220 18880 "POST /api/auth/register/ HTTP/1.1" 400 56
+WARNING 2025-12-10 17:06:20,655 log 27220 5684 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:06:20,656 basehttp 27220 5684 "POST /api/auth/register/ HTTP/1.1" 400 60
+ERROR 2025-12-10 17:07:03,024 exceptions 27220 5528 Error 400 en RegisterAPIView
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\parsers.py", line 64, in parse
+    return json.load(decoded_stream, parse_constant=parse_constant)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\utils\json.py", line 31, in load
+    return json.load(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Expecting ':' delimiter: line 2 column 9 (char 10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\request.py", line 227, in user
+    self._authenticate()
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\request.py", line 380, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\authentication.py", line 130, in authenticate
+    self.enforce_csrf(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\authentication.py", line 145, in enforce_csrf
+    reason = check.process_view(request, None, (), {})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\middleware\csrf.py", line 470, in process_view
+    self._check_token(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\middleware\csrf.py", line 373, in _check_token
+    request_csrf_token = request.POST.get("csrfmiddlewaretoken", "")
+                         ^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\request.py", line 431, in POST
+    self._load_data_and_files()
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\request.py", line 279, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\request.py", line 354, in _parse
+    parsed = parser.parse(stream, media_type, self.parser_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\parsers.py", line 66, in parse
+    raise ParseError('JSON parse error - %s' % str(exc))
+rest_framework.exceptions.ParseError: JSON parse error - Expecting ':' delimiter: line 2 column 9 (char 10)
+WARNING 2025-12-10 17:07:03,038 log 27220 5528 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:07:03,039 basehttp 27220 5528 "POST /api/auth/register/ HTTP/1.1" 400 11826
+INFO 2025-12-10 17:07:13,805 views 27220 22796 Nuevo usuario registrado: juan_perez_123
+INFO 2025-12-10 17:07:13,806 basehttp 27220 22796 "POST /api/auth/register/ HTTP/1.1" 201 162
+WARNING 2025-12-10 17:07:28,590 log 27220 13320 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:07:28,591 basehttp 27220 13320 "POST /api/auth/register/ HTTP/1.1" 400 11934
+WARNING 2025-12-10 17:08:23,117 log 27220 18992 Bad Request: /api/auth/register/
+WARNING 2025-12-10 17:08:23,118 basehttp 27220 18992 "POST /api/auth/register/ HTTP/1.1" 400 11955
+WARNING 2025-12-10 17:08:49,193 log 27220 18992 Not Found: /api/auth/loguin/
+WARNING 2025-12-10 17:08:49,195 basehttp 27220 18992 "GET /api/auth/loguin/ HTTP/1.1" 404 3690
+INFO 2025-12-10 17:09:00,913 basehttp 27220 18992 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-10 17:09:01,094 basehttp 27220 18992 "GET /swagger/?format=openapi HTTP/1.1" 200 43174
+INFO 2025-12-10 17:09:26,086 basehttp 27220 27160 "POST /api/auth/login/ HTTP/1.1" 200 483
+INFO 2025-12-10 17:10:17,825 basehttp 27220 13892 "POST /api/auth/login/ HTTP/1.1" 200 483
+INFO 2025-12-10 17:10:19,876 basehttp 27220 28880 "GET /api/core/health/ HTTP/1.1" 200 97
+INFO 2025-12-10 17:10:21,946 basehttp 27220 28496 "GET /api/core/profiles/ HTTP/1.1" 200 1958
+INFO 2025-12-10 17:10:24,012 basehttp 27220 20672 "GET /api/cultivos/ HTTP/1.1" 200 686
+INFO 2025-12-10 17:10:26,082 basehttp 27220 10576 "GET /api/inventario/insumos/ HTTP/1.1" 200 127
+INFO 2025-12-10 17:10:28,135 basehttp 27220 24288 "GET /api/sensores/ HTTP/1.1" 200 169
+INFO 2025-12-10 17:10:30,191 basehttp 27220 9976 "GET /api/core/health/ HTTP/1.1" 200 97
+ERROR 2025-12-10 17:10:32,239 exceptions 27220 13800 Error 401 en UserProfileViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
+    raise exceptions.NotAuthenticated()
+rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticación no se proveyeron.
+WARNING 2025-12-10 17:10:32,242 log 27220 13800 Unauthorized: /api/core/profiles/
+WARNING 2025-12-10 17:10:32,244 basehttp 27220 13800 "GET /api/core/profiles/ HTTP/1.1" 401 65
+INFO 2025-12-10 17:10:46,696 basehttp 27220 6508 "GET /api/cultivos/ HTTP/1.1" 200 22256
+INFO 2025-12-10 17:10:46,926 basehttp 27220 6508 "GET /static/rest_framework/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+ERROR 2025-12-10 17:11:50,966 exceptions 27220 23796 Error 400 en CultivoViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 235, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'variedad': {'datos_agronomicos': [ErrorDetail(string='El valor debe ser JSON válido.', code='invalid')]}}
+WARNING 2025-12-10 17:11:50,985 log 27220 23796 Bad Request: /api/cultivos/
+WARNING 2025-12-10 17:11:50,986 basehttp 27220 23796 "POST /api/cultivos/ HTTP/1.1" 400 16860
+INFO 2025-12-10 17:12:17,242 autoreload 27220 14872 C:\Users\samue\Documents\agromanager\apps\cultivos\serializers.py changed, reloading.
+INFO 2025-12-10 17:12:17,987 autoreload 16312 25284 Watching for file changes with StatReloader
+INFO 2025-12-10 17:12:31,431 basehttp 16312 17340 "POST /api/auth/login/ HTTP/1.1" 200 483
+ERROR 2025-12-10 17:12:33,465 exceptions 16312 19404 Error 500 en CultivoViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 948, in create
+    raise_errors_on_nested_writes('create', self, validated_data)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+           ^^^^^^^^
+AssertionError: The `.create()` method does not support writable nested fields by default.
+Write an explicit `.create()` method for serializer `apps.cultivos.serializers.CultivoSerializer`, or set `read_only=True` on nested serializer fields.
+CRITICAL 2025-12-10 17:12:33,466 exceptions 16312 19404 Error no controlado: The `.create()` method does not support writable nested fields by default.
+Write an explicit `.create()` method for serializer `apps.cultivos.serializers.CultivoSerializer`, or set `read_only=True` on nested serializer fields.
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 948, in create
+    raise_errors_on_nested_writes('create', self, validated_data)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+           ^^^^^^^^
+AssertionError: The `.create()` method does not support writable nested fields by default.
+Write an explicit `.create()` method for serializer `apps.cultivos.serializers.CultivoSerializer`, or set `read_only=True` on nested serializer fields.
+ERROR 2025-12-10 17:12:33,468 log 16312 19404 Internal Server Error: /api/cultivos/
+ERROR 2025-12-10 17:12:33,469 basehttp 16312 19404 "POST /api/cultivos/ HTTP/1.1" 500 289
+ERROR 2025-12-10 17:12:35,510 exceptions 16312 28800 Error 500 en CultivoViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 948, in create
+    raise_errors_on_nested_writes('create', self, validated_data)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+           ^^^^^^^^
+AssertionError: The `.create()` method does not support writable nested fields by default.
+Write an explicit `.create()` method for serializer `apps.cultivos.serializers.CultivoSerializer`, or set `read_only=True` on nested serializer fields.
+CRITICAL 2025-12-10 17:12:35,512 exceptions 16312 28800 Error no controlado: The `.create()` method does not support writable nested fields by default.
+Write an explicit `.create()` method for serializer `apps.cultivos.serializers.CultivoSerializer`, or set `read_only=True` on nested serializer fields.
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 948, in create
+    raise_errors_on_nested_writes('create', self, validated_data)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+           ^^^^^^^^
+AssertionError: The `.create()` method does not support writable nested fields by default.
+Write an explicit `.create()` method for serializer `apps.cultivos.serializers.CultivoSerializer`, or set `read_only=True` on nested serializer fields.
+ERROR 2025-12-10 17:12:35,514 log 16312 28800 Internal Server Error: /api/cultivos/
+ERROR 2025-12-10 17:12:35,515 basehttp 16312 28800 "POST /api/cultivos/ HTTP/1.1" 500 289
+ERROR 2025-12-10 17:12:37,564 exceptions 16312 24520 Error 500 en CultivoViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 948, in create
+    raise_errors_on_nested_writes('create', self, validated_data)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+           ^^^^^^^^
+AssertionError: The `.create()` method does not support writable nested fields by default.
+Write an explicit `.create()` method for serializer `apps.cultivos.serializers.CultivoSerializer`, or set `read_only=True` on nested serializer fields.
+CRITICAL 2025-12-10 17:12:37,566 exceptions 16312 24520 Error no controlado: The `.create()` method does not support writable nested fields by default.
+Write an explicit `.create()` method for serializer `apps.cultivos.serializers.CultivoSerializer`, or set `read_only=True` on nested serializer fields.
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 948, in create
+    raise_errors_on_nested_writes('create', self, validated_data)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+           ^^^^^^^^
+AssertionError: The `.create()` method does not support writable nested fields by default.
+Write an explicit `.create()` method for serializer `apps.cultivos.serializers.CultivoSerializer`, or set `read_only=True` on nested serializer fields.
+ERROR 2025-12-10 17:12:37,570 log 16312 24520 Internal Server Error: /api/cultivos/
+ERROR 2025-12-10 17:12:37,572 basehttp 16312 24520 "POST /api/cultivos/ HTTP/1.1" 500 289
+INFO 2025-12-10 17:12:39,631 basehttp 16312 28016 "POST /api/cultivos/ HTTP/1.1" 201 216
+ERROR 2025-12-10 17:12:41,670 exceptions 16312 15792 Error 400 en CultivoViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 235, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'variedad': {'datos_agronomicos': [ErrorDetail(string='Debe ser JSON válido. Error: Expecting value: line 1 column 1 (char 0). Ej: {"rendimiento": "8 ton/ha", "ciclo": "120 dias"}', code='invalid')]}}
+WARNING 2025-12-10 17:12:41,671 log 16312 15792 Bad Request: /api/cultivos/
+WARNING 2025-12-10 17:12:41,672 basehttp 16312 15792 "POST /api/cultivos/ HTTP/1.1" 400 227
+INFO 2025-12-10 17:12:51,457 autoreload 16312 25284 C:\Users\samue\Documents\agromanager\apps\cultivos\serializers.py changed, reloading.
+INFO 2025-12-10 17:12:52,078 autoreload 632 14064 Watching for file changes with StatReloader
+INFO 2025-12-10 17:13:20,425 basehttp 632 28776 "POST /api/auth/login/ HTTP/1.1" 200 483
+INFO 2025-12-10 17:13:22,477 basehttp 632 21548 "POST /api/cultivos/ HTTP/1.1" 201 218
+INFO 2025-12-10 17:13:24,542 basehttp 632 15520 "POST /api/cultivos/ HTTP/1.1" 201 218
+INFO 2025-12-10 17:13:26,617 basehttp 632 10232 "POST /api/cultivos/ HTTP/1.1" 201 222
+INFO 2025-12-10 17:13:28,675 basehttp 632 27980 "POST /api/cultivos/ HTTP/1.1" 201 217
+INFO 2025-12-10 17:13:42,353 basehttp 632 24232 "POST /api/auth/login/ HTTP/1.1" 200 483
+INFO 2025-12-10 17:13:44,410 basehttp 632 23920 "GET /api/cultivos/ HTTP/1.1" 200 1782
+INFO 2025-12-10 17:13:53,705 basehttp 632 11352 "POST /api/auth/login/ HTTP/1.1" 200 483
+INFO 2025-12-10 17:13:55,765 basehttp 632 4720 "GET /api/cultivos/ HTTP/1.1" 200 1782
+INFO 2025-12-10 17:14:09,096 basehttp 632 15064 "POST /api/auth/login/ HTTP/1.1" 200 483
+INFO 2025-12-10 17:14:11,159 basehttp 632 27940 "GET /api/cultivos/ HTTP/1.1" 200 1782
+INFO 2025-12-10 17:14:28,983 autoreload 632 14064 C:\Users\samue\Documents\agromanager\apps\cultivos\serializers.py changed, reloading.
+INFO 2025-12-10 17:14:31,418 autoreload 20932 27868 Watching for file changes with StatReloader

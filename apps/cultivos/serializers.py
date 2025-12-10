@@ -1,17 +1,59 @@
 from rest_framework import serializers
 from django.db import transaction
 from .models import Cultivo, CicloSiembra, Variedad
+import json
 
 
 class VariedadSerializer(serializers.ModelSerializer):
+    datos_agronomicos = serializers.JSONField(
+        required=False,
+        allow_null=True,
+        help_text='Datos agronomicos en formato JSON (ej: {"rendimiento": "8 ton/ha", "ciclo": "120 dias"})'
+    )
+    
     class Meta:
         model = Variedad
         fields = ['id', 'nombre', 'descripcion', 'datos_agronomicos']
         extra_kwargs = {
-            'nombre': {'help_text': 'Nombre unico de la variedad (ej: Variedad A1)'},
-            'descripcion': {'help_text': 'Descripcion detallada de caracteristicas de la variedad'},
-            'datos_agronomicos': {'help_text': 'Datos agronomicos en JSON (rendimiento esperado, ciclo, etc)'},
+            'nombre': {
+                'help_text': 'Nombre unico de la variedad (ej: Variedad A1)',
+                'min_length': 2
+            },
+            'descripcion': {
+                'help_text': 'Descripcion detallada de caracteristicas de la variedad',
+                'required': False
+            },
         }
+
+    def validate_datos_agronomicos(self, value):
+        """Validar que datos_agronomicos sea un diccionario JSON válido"""
+        if value is None or value == '':
+            return value
+        
+        if isinstance(value, str):
+            try:
+                json.loads(value)
+            except json.JSONDecodeError as e:
+                raise serializers.ValidationError(
+                    f'Debe ser JSON válido. Error: {str(e)}. '
+                    f'Ej: {{"rendimiento": "8 ton/ha", "ciclo": "120 dias"}}'
+                )
+        elif isinstance(value, dict):
+            # Si es un diccionario, está bien
+            pass
+        else:
+            raise serializers.ValidationError(
+                'Debe ser JSON válido (diccionario). '
+                'Ej: {"rendimiento": "8 ton/ha", "ciclo": "120 dias"}'
+            )
+        
+        return value
+    
+    def validate_nombre(self, value):
+        """Validar nombre de variedad"""
+        if not value or len(value.strip()) < 2:
+            raise serializers.ValidationError('El nombre debe tener mínimo 2 caracteres.')
+        return value.strip()
 
 
 class CicloSerializer(serializers.ModelSerializer):
@@ -46,3 +88,26 @@ class CultivoSerializer(serializers.ModelSerializer):
             'unidad_productiva': {'help_text': 'Ubicacion o identificador de la unidad productiva (opcional)'},
             'sensores': {'help_text': 'JSON con configuracion de sensores asociados (opcional)'},
         }
+
+    def create(self, validated_data):
+        """Crear cultivo con variedad anidada"""
+        variedad_data = validated_data.pop('variedad', None)
+        
+        # Crear cultivo
+        cultivo = Cultivo.objects.create(**validated_data)
+        
+        # Crear variedad si se proporciona
+        if variedad_data:
+            variedad = Variedad.objects.create(**variedad_data)
+            cultivo.variedad = variedad
+            cultivo.save()
+        
+        return cultivo
+    
+    def to_representation(self, instance):
+        """Personalizar la representación para incluir variedad"""
+        data = super().to_representation(instance)
+        # Si hay variedad, asegurar que se serializa correctamente
+        if instance.variedad:
+            data['variedad'] = VariedadSerializer(instance.variedad).data
+        return data

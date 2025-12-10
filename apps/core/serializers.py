@@ -74,39 +74,119 @@ class AuditLogSerializer(serializers.ModelSerializer):
 
 
 class RegisterSerializer(serializers.ModelSerializer):
-    """Serializer para registro de nuevo usuario"""
-    password = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'})
-    password2 = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'}, label='Confirmar contraseña')
-    email = serializers.EmailField(required=True)
+    """Serializer para registro de nuevo usuario con validación detallada"""
+    password = serializers.CharField(
+        write_only=True, 
+        required=True, 
+        style={'input_type': 'password'},
+        help_text='Mínimo 8 caracteres, debe incluir mayúsculas, minúsculas, números y símbolos'
+    )
+    password2 = serializers.CharField(
+        write_only=True, 
+        required=True, 
+        style={'input_type': 'password'}, 
+        label='Confirmar contraseña',
+        help_text='Debe coincidir exactamente con la contraseña anterior'
+    )
+    email = serializers.EmailField(required=True, help_text='Formato válido: usuario@dominio.com')
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password', 'password2', 'first_name', 'last_name']
         extra_kwargs = {
-            'first_name': {'required': True},
-            'last_name': {'required': True},
+            'username': {
+                'required': True,
+                'help_text': 'Solo letras, números y guiones bajos. Mínimo 3 caracteres.'
+            },
+            'first_name': {
+                'required': True,
+                'help_text': 'Tu nombre de pila'
+            },
+            'last_name': {
+                'required': True,
+                'help_text': 'Tu apellido'
+            },
         }
 
+    def validate_username(self, value):
+        """Validar username"""
+        if len(value) < 3:
+            raise serializers.ValidationError('El usuario debe tener mínimo 3 caracteres.')
+        if not value.replace('_', '').isalnum():
+            raise serializers.ValidationError('El usuario solo puede contener letras, números y guiones bajos.')
+        if User.objects.filter(username=value).exists():
+            raise serializers.ValidationError('Este nombre de usuario ya está registrado.')
+        return value
+
+    def validate_email(self, value):
+        """Validar email"""
+        if ';' in value or ',' in value:
+            raise serializers.ValidationError('El email contiene caracteres inválidos. Use formato correcto: usuario@dominio.com')
+        if User.objects.filter(email=value).exists():
+            raise serializers.ValidationError('Este email ya está registrado en el sistema.')
+        return value
+
+    def validate_first_name(self, value):
+        """Validar nombre"""
+        if not value or len(value.strip()) < 2:
+            raise serializers.ValidationError('El nombre debe tener mínimo 2 caracteres.')
+        if not value.isalpha():
+            raise serializers.ValidationError('El nombre solo puede contener letras.')
+        return value.strip()
+
+    def validate_last_name(self, value):
+        """Validar apellido"""
+        if not value or len(value.strip()) < 2:
+            raise serializers.ValidationError('El apellido debe tener mínimo 2 caracteres.')
+        if not value.isalpha():
+            raise serializers.ValidationError('El apellido solo puede contener letras.')
+        return value.strip()
+
     def validate_password(self, value):
-        """Validar contraseña con validadores de Django"""
+        """Validar contraseña con mensajes claros"""
+        errors = []
+        
+        if len(value) < 8:
+            errors.append('Mínimo 8 caracteres (actual: {})'.format(len(value)))
+        
+        if not any(c.isupper() for c in value):
+            errors.append('Debe incluir al menos una mayúscula (A-Z)')
+        
+        if not any(c.islower() for c in value):
+            errors.append('Debe incluir al menos una minúscula (a-z)')
+        
+        if not any(c.isdigit() for c in value):
+            errors.append('Debe incluir al menos un número (0-9)')
+        
+        if not any(c in '!@#$%^&*()_+-=[]{}|;:,.<>?' for c in value):
+            errors.append('Debe incluir al menos un símbolo (!@#$%^&*...)')
+        
+        if value.isdigit():
+            errors.append('No puede ser completamente numérica')
+        
+        if value.lower() == value:
+            errors.append('No puede ser completamente minúscula')
+        
+        # Validadores de Django adicionales
         try:
             validate_password(value)
         except ValidationError as e:
-            raise serializers.ValidationError(str(e))
+            for msg in e.messages:
+                if msg not in errors:
+                    errors.append(msg)
+        
+        if errors:
+            raise serializers.ValidationError('Contraseña débil: ' + ' | '.join(errors))
+        
         return value
 
     def validate(self, data):
-        """Validar que las contraseñas coincidan"""
+        """Validar datos completos"""
+        # Validar que las contraseñas coincidan
         if data.get('password') != data.get('password2'):
-            raise serializers.ValidationError({'password2': 'Las contraseñas no coinciden.'})
-        
-        # Verificar email único
-        if User.objects.filter(email=data.get('email')).exists():
-            raise serializers.ValidationError({'email': 'Este email ya está registrado.'})
-        
-        # Verificar username único
-        if User.objects.filter(username=data.get('username')).exists():
-            raise serializers.ValidationError({'username': 'Este usuario ya existe.'})
+            raise serializers.ValidationError({
+                'password2': 'Las contraseñas no coinciden. Verifica que ambas sean idénticas.'
+            })
         
         return data
 
