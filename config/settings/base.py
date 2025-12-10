@@ -7,10 +7,12 @@ import logging
 from pathlib import Path
 from datetime import timedelta
 
+
 try:
     import dj_database_url
 except ImportError:
     dj_database_url = None
+
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +35,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'apps.inventario',
+]
+
+# Optional apps (only enable if installed in the environment)
+try:
+    import importlib
+
+    if importlib.util.find_spec('django_filters'):
+        INSTALLED_APPS.insert(INSTALLED_APPS.index('apps.inventario'), 'django_filters')
+except Exception:
+    # Keep going if optional packages are missing (tests/environment may be minimal)
+    pass
 
     # Apps del proyecto
     "apps.core",
@@ -48,6 +63,7 @@ INSTALLED_APPS = [
 # -------------------------------------------------------------
 # 🔥 MIDDLEWARE
 # -------------------------------------------------------------
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

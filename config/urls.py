@@ -38,9 +38,12 @@ urlpatterns = [
     path("api/auth/register/", register, name="register"),
     path("api/auth/password-reset/", request_password_reset, name="password_reset_request"),
     path("api/auth/password-reset-confirm/", confirm_password_reset, name="password_reset_confirm"),
+    path('inventario/', include('apps.inventario.urls')),
+    path('api/inventario/', include('apps.inventario.urls')),
 
     # Swagger
     path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="swagger-ui"),
     path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="redoc-ui"),
     path("swagger.json", schema_view.without_ui(cache_timeout=0), name="schema-json"),
+
 ]
