@@ -430,6 +430,28 @@ class RegisterAPITestCase(APITestCase):
         response = self.client.post('/api/auth/register/', data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
+    def test_register_user_form_data(self):
+        """Registrar usuario con form-data en lugar de JSON"""
+        data = {
+            'username': 'formuser',
+            'email': 'formuser@example.com',
+            'password': 'SecurePassword123!',
+            'password2': 'SecurePassword123!',
+            'first_name': 'Form',
+            'last_name': 'User',
+        }
+        response = self.client.post('/api/auth/register/', data)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertTrue(User.objects.filter(username='formuser').exists())
+
+    def test_register_user_get_help(self):
+        """GET retorna información del endpoint"""
+        response = self.client.get('/api/auth/register/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('endpoint', response.data)
+        self.assertIn('required_fields', response.data)
+        self.assertIn('example', response.data)
+
 
 class PasswordResetAPITestCase(APITestCase):
     """Tests para los endpoints de recuperación de contraseña"""

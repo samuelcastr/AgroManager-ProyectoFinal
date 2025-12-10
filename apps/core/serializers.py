@@ -75,9 +75,23 @@ class AuditLogSerializer(serializers.ModelSerializer):
 
 class RegisterSerializer(serializers.ModelSerializer):
     """Serializer para registro de nuevo usuario"""
-    password = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'})
-    password2 = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'}, label='Confirmar contraseña')
-    email = serializers.EmailField(required=True)
+    password = serializers.CharField(
+        write_only=True, 
+        required=True, 
+        style={'input_type': 'password'},
+        help_text='Mínimo 8 caracteres con mayúscula, minúscula y número'
+    )
+    password2 = serializers.CharField(
+        write_only=True, 
+        required=True, 
+        style={'input_type': 'password'}, 
+        label='Confirmar contraseña',
+        help_text='Debe coincidir exactamente con la contraseña anterior'
+    )
+    email = serializers.EmailField(required=True, help_text='Email válido y único')
+    username = serializers.CharField(required=True, help_text='Nombre de usuario único')
+    first_name = serializers.CharField(required=True, help_text='Tu nombre')
+    last_name = serializers.CharField(required=True, help_text='Tu apellido')
 
     class Meta:
         model = User

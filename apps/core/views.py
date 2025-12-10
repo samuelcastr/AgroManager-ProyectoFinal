@@ -3,6 +3,9 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import status, viewsets, filters
 from rest_framework.decorators import action
+from rest_framework.views import APIView
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 from django.db import connection, DatabaseError
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
@@ -164,64 +167,147 @@ class AuditLogViewSet(viewsets.ReadOnlyModelViewSet):
     ordering = ['-created_at']
 
 
-@api_view(['POST'])
-@permission_classes([AllowAny])
-def register(request):
+class RegisterAPIView(APIView):
     """
-    Endpoint para registro de nuevo usuario.
+    API endpoint para registro de nuevo usuario.
     
-    Campos requeridos:
-    - username: nombre de usuario único
-    - email: email único
-    - password: contraseña (mínimo 8 caracteres)
-    - password2: confirmación de contraseña
-    - first_name: nombre
-    - last_name: apellido
+    Soporta múltiples formatos:
+    - JSON: Content-Type: application/json
+    - Form-data: Content-Type: application/x-www-form-urlencoded
+    - Multipart-form: Content-Type: multipart/form-data
+    
+    POST /api/auth/register/
+    {
+        "username": "juan",
+        "email": "juan@example.com",
+        "password": "SecurePass123!",
+        "password2": "SecurePass123!",
+        "first_name": "Juan",
+        "last_name": "Pérez"
+    }
     """
-    serializer = RegisterSerializer(data=request.data)
-    if serializer.is_valid():
-        user = serializer.save()
-        logger.info(f"Nuevo usuario registrado: {user.username}")
+    permission_classes = [AllowAny]
+    
+    @swagger_auto_schema(
+        operation_description='Crear nuevo usuario con registro',
+        request_body=RegisterSerializer,
+        responses={
+            201: openapi.Response(
+                description='Usuario registrado exitosamente',
+                schema=openapi.Schema(
+                    type=openapi.TYPE_OBJECT,
+                    properties={
+                        'message': openapi.Schema(type=openapi.TYPE_STRING),
+                        'user': openapi.Schema(
+                            type=openapi.TYPE_OBJECT,
+                            properties={
+                                'id': openapi.Schema(type=openapi.TYPE_INTEGER),
+                                'username': openapi.Schema(type=openapi.TYPE_STRING),
+                                'email': openapi.Schema(type=openapi.TYPE_STRING),
+                                'first_name': openapi.Schema(type=openapi.TYPE_STRING),
+                                'last_name': openapi.Schema(type=openapi.TYPE_STRING),
+                            }
+                        )
+                    }
+                )
+            ),
+            400: openapi.Response(description='Datos inválidos')
+        }
+    )
+    def post(self, request, *args, **kwargs):
+        """Crear nuevo usuario"""
+        serializer = RegisterSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            logger.info(f"Nuevo usuario registrado: {user.username}")
+            return Response({
+                'message': 'Usuario registrado exitosamente',
+                'user': {
+                    'id': user.id,
+                    'username': user.username,
+                    'email': user.email,
+                    'first_name': user.first_name,
+                    'last_name': user.last_name,
+                }
+            }, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    @swagger_auto_schema(
+        operation_description='Obtener información sobre el endpoint de registro',
+        responses={
+            200: openapi.Response(
+                description='Información del endpoint',
+                schema=openapi.Schema(
+                    type=openapi.TYPE_OBJECT,
+                    properties={
+                        'endpoint': openapi.Schema(type=openapi.TYPE_STRING),
+                        'method': openapi.Schema(type=openapi.TYPE_STRING),
+                        'description': openapi.Schema(type=openapi.TYPE_STRING),
+                        'required_fields': openapi.Schema(type=openapi.TYPE_ARRAY, items=openapi.Schema(type=openapi.TYPE_STRING)),
+                        'example': openapi.Schema(type=openapi.TYPE_OBJECT),
+                    }
+                )
+            )
+        }
+    )
+    def get(self, request, *args, **kwargs):
+        """Retornar información sobre el endpoint"""
         return Response({
-            'message': 'Usuario registrado exitosamente',
-            'user': {
-                'id': user.id,
-                'username': user.username,
-                'email': user.email,
-                'first_name': user.first_name,
-                'last_name': user.last_name,
+            'endpoint': '/api/auth/register/',
+            'method': 'POST',
+            'description': 'Registrar nuevo usuario',
+            'required_fields': [
+                'username (string, único)',
+                'email (string, válido y único)',
+                'password (string, mínimo 8 caracteres)',
+                'password2 (string, debe coincidir con password)',
+                'first_name (string)',
+                'last_name (string)'
+            ],
+            'example': {
+                'username': 'juan',
+                'email': 'juan@example.com',
+                'password': 'SecurePass123!',
+                'password2': 'SecurePass123!',
+                'first_name': 'Juan',
+                'last_name': 'Pérez'
             }
-        }, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        })
 
 
-@api_view(['POST'])
-@permission_classes([AllowAny])
-def request_password_reset(request):
+class RequestPasswordResetAPIView(APIView):
     """
-    Endpoint para solicitar recuperación de contraseña.
+    API endpoint para solicitar recuperación de contraseña.
     
-    Campos requeridos:
-    - email: email registrado
+    Soporta múltiples formatos:
+    - JSON: Content-Type: application/json
+    - Form-data: Content-Type: application/x-www-form-urlencoded
     
-    Envía un correo con un enlace para recuperar la contraseña.
+    POST /api/auth/password-reset/
+    {
+        "email": "usuario@example.com"
+    }
     """
-    serializer = RequestPasswordResetSerializer(data=request.data)
-    if serializer.is_valid():
-        email = serializer.validated_data['email']
-        user = User.objects.get(email=email)
-        
-        # Crear token de recuperación
-        reset_token = PasswordResetToken.create_token(user)
-        
-        # Preparar URL para recuperación (frontend debe usar este token)
-        reset_url = f"{settings.FRONTEND_URL}/reset-password/{reset_token.token}" if hasattr(settings, 'FRONTEND_URL') else f"http://localhost:3000/reset-password/{reset_token.token}"
-        
-        # Enviar email
-        try:
-            send_mail(
-                subject='Recuperación de contraseña - AgroManager',
-                message=f"""
+    permission_classes = [AllowAny]
+    
+    def post(self, request, *args, **kwargs):
+        """Solicitar recuperación de contraseña"""
+        serializer = RequestPasswordResetSerializer(data=request.data)
+        if serializer.is_valid():
+            email = serializer.validated_data['email']
+            user = User.objects.get(email=email)
+            
+            # Crear token de recuperación
+            reset_token = PasswordResetToken.create_token(user)
+            
+            # Preparar URL para recuperación
+            reset_url = f"{settings.FRONTEND_URL}/reset-password/{reset_token.token}" if hasattr(settings, 'FRONTEND_URL') else f"http://localhost:3000/reset-password/{reset_token.token}"
+            
+            # Enviar email
+            try:
+                send_mail(
+                    subject='Recuperación de contraseña - AgroManager',
+                    message=f"""
 Hola {user.first_name},
 
 Has solicitado recuperar tu contraseña. Haz clic en el siguiente enlace para establecer una nueva contraseña:
@@ -234,60 +320,98 @@ Si no solicitaste esto, ignora este correo.
 
 Saludos,
 Equipo AgroManager
-                """,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[user.email],
-                fail_silently=False,
-            )
-            logger.info(f"Email de recuperación enviado a: {user.email}")
-        except Exception as e:
-            logger.error(f"Error enviando email de recuperación: {str(e)}")
-            # En desarrollo, retornar el token para pruebas
-            if settings.DEBUG:
+                    """,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[user.email],
+                    fail_silently=False,
+                )
+                logger.info(f"Email de recuperación enviado a: {user.email}")
+            except Exception as e:
+                logger.error(f"Error enviando email de recuperación: {str(e)}")
+                # En desarrollo, retornar el token para pruebas
+                if settings.DEBUG:
+                    return Response({
+                        'message': 'Email no pudo ser enviado, pero aquí está el token para pruebas',
+                        'token': reset_token.token,
+                        'reset_url': reset_url,
+                    }, status=status.HTTP_200_OK)
                 return Response({
-                    'message': 'Email no pudo ser enviado, pero aquí está el token para pruebas',
-                    'token': reset_token.token,
-                    'reset_url': reset_url,
-                }, status=status.HTTP_200_OK)
+                    'error': 'No se pudo enviar el email de recuperación'
+                }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
             return Response({
-                'error': 'No se pudo enviar el email de recuperación'
-            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
-        return Response({
-            'message': 'Email de recuperación enviado. Por favor, revisa tu correo.'
-        }, status=status.HTTP_200_OK)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(['POST'])
-@permission_classes([AllowAny])
-def confirm_password_reset(request):
-    """
-    Endpoint para confirmar recuperación de contraseña.
+                'message': 'Email de recuperación enviado. Por favor, revisa tu correo.'
+            }, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    Campos requeridos:
-    - token: token recibido en el email
-    - password: nueva contraseña
-    - password2: confirmación de nueva contraseña
-    """
-    serializer = PasswordResetConfirmSerializer(data=request.data)
-    if serializer.is_valid():
-        reset_token = serializer.validated_data['reset_token']
-        new_password = serializer.validated_data['password']
-        
-        # Actualizar contraseña
-        user = reset_token.user
-        user.set_password(new_password)
-        user.save()
-        
-        # Marcar token como usado
-        reset_token.is_used = True
-        reset_token.save()
-        
-        logger.info(f"Contraseña actualizada para usuario: {user.username}")
-        
+    def get(self, request, *args, **kwargs):
+        """Retornar información sobre el endpoint"""
         return Response({
-            'message': 'Contraseña actualizada exitosamente. Ya puedes iniciar sesión.'
-        }, status=status.HTTP_200_OK)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            'endpoint': '/api/auth/password-reset/',
+            'method': 'POST',
+            'description': 'Solicitar recuperación de contraseña',
+            'required_fields': ['email (string, registrado)'],
+            'example': {'email': 'usuario@example.com'}
+        })
+
+
+class ConfirmPasswordResetAPIView(APIView):
+    """
+    API endpoint para confirmar recuperación de contraseña.
+    
+    Soporta múltiples formatos:
+    - JSON: Content-Type: application/json
+    - Form-data: Content-Type: application/x-www-form-urlencoded
+    
+    POST /api/auth/password-reset-confirm/
+    {
+        "token": "token_del_email",
+        "password": "NuevaPass123!",
+        "password2": "NuevaPass123!"
+    }
+    """
+    permission_classes = [AllowAny]
+    
+    def post(self, request, *args, **kwargs):
+        """Confirmar y procesar recuperación de contraseña"""
+        serializer = PasswordResetConfirmSerializer(data=request.data)
+        if serializer.is_valid():
+            reset_token = serializer.validated_data['reset_token']
+            new_password = serializer.validated_data['password']
+            
+            # Actualizar contraseña
+            user = reset_token.user
+            user.set_password(new_password)
+            user.save()
+            
+            # Marcar token como usado
+            reset_token.is_used = True
+            reset_token.save()
+            
+            logger.info(f"Contraseña actualizada para usuario: {user.username}")
+            
+            return Response({
+                'message': 'Contraseña actualizada exitosamente. Ya puedes iniciar sesión.'
+            }, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def get(self, request, *args, **kwargs):
+        """Retornar información sobre el endpoint"""
+        return Response({
+            'endpoint': '/api/auth/password-reset-confirm/',
+            'method': 'POST',
+            'description': 'Confirmar recuperación de contraseña',
+            'required_fields': [
+                'token (string, del email)',
+                'password (string, nueva contraseña)',
+                'password2 (string, confirmación)'
+            ],
+            'example': {
+                'token': 'gAJ5y3Ht_xRqW2pL9vZm_dE5kFt7sB4cJ6gN...',
+                'password': 'NuevaPass123!',
+                'password2': 'NuevaPass123!'
+            }
+        })
+
+
 

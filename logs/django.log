@@ -8,7 +8,7 @@ Traceback (most recent call last):
     self.permission_denied(
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 175, in permission_denied
     raise exceptions.PermissionDenied(detail=message, code=code)
-rest_framework.exceptions.PermissionDenied: Usted no tiene permiso para realizar esta acción.
+rest_framework.exceptions.PermissionDenied: Usted no tiene permiso para realizar esta acciï¿½n.
 WARNING 2025-12-05 18:26:12,043 log 26416 9544 Forbidden: /api/core/profiles/
 ERROR 2025-12-05 18:26:13,778 exceptions 26416 9544 Error 401 en UserProfileViewSet
 Traceback (most recent call last):
@@ -20,7 +20,7 @@ Traceback (most recent call last):
     self.permission_denied(
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
     raise exceptions.NotAuthenticated()
-rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticación no se proveyeron.
+rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticaciï¿½n no se proveyeron.
 WARNING 2025-12-05 18:26:13,779 log 26416 9544 Unauthorized: /api/core/profiles/
 INFO 2025-12-05 18:31:50,562 autoreload 24592 1632 Watching for file changes with StatReloader
 WARNING 2025-12-05 18:32:00,391 log 24592 17248 Not Found: /
@@ -77,8 +77,8 @@ INFO 2025-12-05 18:37:01,078 autoreload 23920 16380 C:\Users\samue\Documents\agr
 INFO 2025-12-05 18:37:01,879 autoreload 26536 27932 Watching for file changes with StatReloader
 WARNING 2025-12-05 18:38:36,360 log 27324 24800 Bad Request: /api/auth/password-reset-confirm/
 WARNING 2025-12-05 18:38:36,588 log 27324 24800 Bad Request: /api/auth/password-reset-confirm/
-INFO 2025-12-05 18:38:37,044 views 27324 24800 Contraseña actualizada para usuario: testuser
-INFO 2025-12-05 18:38:37,510 views 27324 24800 Email de recuperación enviado a: test@example.com
+INFO 2025-12-05 18:38:37,044 views 27324 24800 Contraseï¿½a actualizada para usuario: testuser
+INFO 2025-12-05 18:38:37,510 views 27324 24800 Email de recuperaciï¿½n enviado a: test@example.com
 WARNING 2025-12-05 18:38:37,736 log 27324 24800 Bad Request: /api/auth/password-reset/
 WARNING 2025-12-05 18:38:37,966 log 27324 24800 Bad Request: /api/auth/register/
 WARNING 2025-12-05 18:38:37,966 log 27324 24800 Bad Request: /api/auth/register/
@@ -94,7 +94,7 @@ Traceback (most recent call last):
     self.permission_denied(
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 175, in permission_denied
     raise exceptions.PermissionDenied(detail=message, code=code)
-rest_framework.exceptions.PermissionDenied: Usted no tiene permiso para realizar esta acción.
+rest_framework.exceptions.PermissionDenied: Usted no tiene permiso para realizar esta acciï¿½n.
 WARNING 2025-12-05 18:38:42,145 log 27324 24800 Forbidden: /api/core/profiles/
 ERROR 2025-12-05 18:38:43,896 exceptions 27324 24800 Error 401 en UserProfileViewSet
 Traceback (most recent call last):
@@ -106,7 +106,7 @@ Traceback (most recent call last):
     self.permission_denied(
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
     raise exceptions.NotAuthenticated()
-rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticación no se proveyeron.
+rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticaciï¿½n no se proveyeron.
 WARNING 2025-12-05 18:38:43,896 log 27324 24800 Unauthorized: /api/core/profiles/
 INFO 2025-12-05 18:40:21,611 autoreload 29292 21040 Watching for file changes with StatReloader
 WARNING 2025-12-05 18:40:26,720 log 29292 12480 Not Found: /
@@ -118,7 +118,7 @@ Traceback (most recent call last):
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 167, in http_method_not_allowed
     raise exceptions.MethodNotAllowed(request.method)
-rest_framework.exceptions.MethodNotAllowed: Método "GET" no permitido.
+rest_framework.exceptions.MethodNotAllowed: Mï¿½todo "GET" no permitido.
 WARNING 2025-12-05 18:40:50,905 log 29292 4120 Method Not Allowed: /api/auth/register/
 WARNING 2025-12-05 18:40:50,906 basehttp 29292 4120 "GET /api/auth/register/ HTTP/1.1" 405 10719
 INFO 2025-12-05 18:40:51,245 basehttp 29292 4692 "GET /static/rest_framework/js/jquery-3.5.1.min.js HTTP/1.1" 200 89476
@@ -153,7 +153,7 @@ Traceback (most recent call last):
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 167, in http_method_not_allowed
     raise exceptions.MethodNotAllowed(request.method)
-rest_framework.exceptions.MethodNotAllowed: Método "GET" no permitido.
+rest_framework.exceptions.MethodNotAllowed: Mï¿½todo "GET" no permitido.
 WARNING 2025-12-05 18:50:01,317 log 17516 28984 Method Not Allowed: /api/auth/refresh/
 WARNING 2025-12-05 18:50:01,319 basehttp 17516 28984 "GET /api/auth/refresh/ HTTP/1.1" 405 12114
 INFO 2025-12-05 18:50:01,333 basehttp 17516 28984 "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
@@ -201,7 +201,7 @@ Traceback (most recent call last):
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\backends.py", line 154, in decode
     raise TokenBackendError(_("Token is invalid or expired")) from ex
-rest_framework_simplejwt.exceptions.TokenBackendError: El token es inválido o ha expirado
+rest_framework_simplejwt.exceptions.TokenBackendError: El token es invï¿½lido o ha expirado
 
 During handling of the above exception, another exception occurred:
 
@@ -219,7 +219,7 @@ Traceback (most recent call last):
               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\tokens.py", line 58, in __init__
     raise TokenError(_("Token is invalid or expired"))
-rest_framework_simplejwt.exceptions.TokenError: El token es inválido o ha expirado
+rest_framework_simplejwt.exceptions.TokenError: El token es invï¿½lido o ha expirado
 
 During handling of the above exception, another exception occurred:
 
@@ -229,7 +229,7 @@ Traceback (most recent call last):
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\views.py", line 46, in post
     raise InvalidToken(e.args[0])
-rest_framework_simplejwt.exceptions.InvalidToken: {'detail': ErrorDetail(string='El token es inválido o ha expirado', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid')}
+rest_framework_simplejwt.exceptions.InvalidToken: {'detail': ErrorDetail(string='El token es invï¿½lido o ha expirado', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid')}
 WARNING 2025-12-05 18:50:13,463 log 17516 23028 Unauthorized: /api/auth/refresh/
 WARNING 2025-12-05 18:50:13,463 basehttp 17516 23028 "POST /api/auth/refresh/ HTTP/1.1" 401 12115
 ERROR 2025-12-05 18:50:29,163 exceptions 17516 4244 Error 405 en register
@@ -239,7 +239,7 @@ Traceback (most recent call last):
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 167, in http_method_not_allowed
     raise exceptions.MethodNotAllowed(request.method)
-rest_framework.exceptions.MethodNotAllowed: Método "GET" no permitido.
+rest_framework.exceptions.MethodNotAllowed: Mï¿½todo "GET" no permitido.
 WARNING 2025-12-05 18:50:29,164 log 17516 4244 Method Not Allowed: /api/auth/register/
 WARNING 2025-12-05 18:50:29,164 basehttp 17516 4244 "GET /api/auth/register/ HTTP/1.1" 405 10719
 WARNING 2025-12-05 18:50:35,127 log 17516 25096 Bad Request: /api/auth/register/
@@ -318,7 +318,7 @@ Traceback (most recent call last):
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 167, in http_method_not_allowed
     raise exceptions.MethodNotAllowed(request.method)
-rest_framework.exceptions.MethodNotAllowed: Método "GET" no permitido.
+rest_framework.exceptions.MethodNotAllowed: Mï¿½todo "GET" no permitido.
 WARNING 2025-12-05 18:57:32,247 log 10312 1748 Method Not Allowed: /api/auth/login/
 WARNING 2025-12-05 18:57:32,247 basehttp 10312 1748 "GET /api/auth/login/ HTTP/1.1" 405 12441
 INFO 2025-12-05 18:57:32,268 basehttp 10312 1748 "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
@@ -349,7 +349,7 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 57, in validate
     raise exceptions.AuthenticationFailed(
-rest_framework.exceptions.AuthenticationFailed: La combinación de credenciales no tiene una cuenta activa
+rest_framework.exceptions.AuthenticationFailed: La combinaciï¿½n de credenciales no tiene una cuenta activa
 WARNING 2025-12-05 18:58:10,745 log 10312 17016 Unauthorized: /api/auth/login/
 WARNING 2025-12-05 18:58:10,745 basehttp 10312 17016 "POST /api/auth/login/ HTTP/1.1" 401 12387
 ERROR 2025-12-05 18:59:04,159 exceptions 10312 6668 Error 401 en TokenObtainPairView
@@ -370,7 +370,7 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 57, in validate
     raise exceptions.AuthenticationFailed(
-rest_framework.exceptions.AuthenticationFailed: La combinación de credenciales no tiene una cuenta activa
+rest_framework.exceptions.AuthenticationFailed: La combinaciï¿½n de credenciales no tiene una cuenta activa
 WARNING 2025-12-05 18:59:04,165 log 10312 6668 Unauthorized: /api/auth/login/
 WARNING 2025-12-05 18:59:04,167 basehttp 10312 6668 "POST /api/auth/login/ HTTP/1.1" 401 12387
 INFO 2025-12-05 18:59:38,488 basehttp 10312 25308 "POST /api/auth/login/ HTTP/1.1" 200 12883
@@ -381,8 +381,345 @@ Traceback (most recent call last):
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 167, in http_method_not_allowed
     raise exceptions.MethodNotAllowed(request.method)
-rest_framework.exceptions.MethodNotAllowed: Método "GET" no permitido.
+rest_framework.exceptions.MethodNotAllowed: Mï¿½todo "GET" no permitido.
 WARNING 2025-12-05 19:05:34,009 log 10312 22532 Method Not Allowed: /api/auth/register/
 WARNING 2025-12-05 19:05:34,014 basehttp 10312 22532 "GET /api/auth/register/ HTTP/1.1" 405 10719
 INFO 2025-12-05 19:10:25,315 autoreload 10312 7104 C:\Users\samue\Documents\agromanager\config\settings\dev.py changed, reloading.
 INFO 2025-12-05 19:10:27,096 autoreload 29300 25664 Watching for file changes with StatReloader
+INFO 2025-12-10 15:08:00,822 autoreload 6032 28156 Watching for file changes with StatReloader
+INFO 2025-12-10 15:09:28,975 autoreload 14492 16596 Watching for file changes with StatReloader
+INFO 2025-12-10 15:13:08,207 autoreload 23924 12924 Watching for file changes with StatReloader
+INFO 2025-12-10 15:14:00,571 autoreload 28536 7288 Watching for file changes with StatReloader
+WARNING 2025-12-10 15:14:06,694 log 28536 28068 Not Found: /
+WARNING 2025-12-10 15:14:06,694 basehttp 28536 28068 "GET / HTTP/1.1" 404 3283
+WARNING 2025-12-10 15:14:07,165 log 28536 18488 Not Found: /favicon.ico
+WARNING 2025-12-10 15:14:07,167 basehttp 28536 18488 "GET /favicon.ico HTTP/1.1" 404 3334
+WARNING 2025-12-10 15:14:37,116 log 28536 3228 Not Found: /swagge4r
+WARNING 2025-12-10 15:14:37,117 basehttp 28536 3228 "GET /swagge4r HTTP/1.1" 404 3325
+INFO 2025-12-10 15:14:42,759 basehttp 28536 3228 "GET /swagger HTTP/1.1" 301 0
+INFO 2025-12-10 15:14:42,819 basehttp 28536 12108 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-10 15:14:43,371 basehttp 28536 12764 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 200 56904
+INFO 2025-12-10 15:14:43,384 basehttp 28536 12764 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 200 14964
+INFO 2025-12-10 15:14:43,392 basehttp 28536 13740 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 200 2093
+INFO 2025-12-10 15:14:43,421 basehttp 28536 12108 "GET /static/drf-yasg/style.css HTTP/1.1" 200 1047
+INFO 2025-12-10 15:14:43,437 basehttp 28536 1412 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 200 145206
+INFO 2025-12-10 15:14:43,459 basehttp 28536 17444 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 200 322863
+INFO 2025-12-10 15:14:43,462 basehttp 28536 11052 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 200 1046583
+INFO 2025-12-10 15:14:43,805 basehttp 28536 11052 "GET /swagger/?format=openapi HTTP/1.1" 200 18611
+INFO 2025-12-10 15:14:43,807 basehttp 28536 17444 "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 200 628
+ERROR 2025-12-10 15:15:12,490 exceptions 28536 12856 Error 405 en register
+Traceback (most recent call last):
+  File "C:\Users\samue\Documents\agromanager\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\Documents\agromanager\venv\Lib\site-packages\rest_framework\views.py", line 167, in http_method_not_allowed
+    raise exceptions.MethodNotAllowed(request.method)
+rest_framework.exceptions.MethodNotAllowed: Método "GET" no permitido.
+WARNING 2025-12-10 15:15:12,554 log 28536 12856 Method Not Allowed: /api/auth/register/
+WARNING 2025-12-10 15:15:12,557 basehttp 28536 12856 "GET /api/auth/register/ HTTP/1.1" 405 5947
+INFO 2025-12-10 15:15:12,580 basehttp 28536 3280 "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+INFO 2025-12-10 15:15:12,597 basehttp 28536 3280 "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1719
+INFO 2025-12-10 15:15:12,597 basehttp 28536 1304 "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+INFO 2025-12-10 15:15:12,599 basehttp 28536 12456 "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+INFO 2025-12-10 15:15:12,599 basehttp 28536 6680 "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+INFO 2025-12-10 15:15:12,613 basehttp 28536 12856 "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+INFO 2025-12-10 15:15:12,619 basehttp 28536 1304 "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+INFO 2025-12-10 15:15:12,625 basehttp 28536 3280 "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+INFO 2025-12-10 15:15:12,626 basehttp 28536 10084 "GET /static/rest_framework/js/jquery-3.5.1.min.js HTTP/1.1" 200 89476
+INFO 2025-12-10 15:15:12,627 basehttp 28536 12456 "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+INFO 2025-12-10 15:15:12,638 basehttp 28536 12456 "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+INFO 2025-12-10 15:15:48,960 basehttp 28536 20944 "OPTIONS /api/auth/register/ HTTP/1.1" 200 6472
+WARNING 2025-12-10 15:17:04,453 log 28536 6912 Bad Request: /api/auth/register/
+WARNING 2025-12-10 15:17:04,454 basehttp 28536 6912 "POST /api/auth/register/ HTTP/1.1" 400 5957
+INFO 2025-12-10 15:17:31,793 basehttp 28536 5028 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-10 15:17:31,846 basehttp 28536 26908 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:17:31,846 basehttp 28536 5028 "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:17:31,861 basehttp 28536 26908 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:17:31,862 basehttp 28536 2472 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:17:31,863 basehttp 28536 5028 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:17:31,863 basehttp 28536 28988 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:17:31,864 basehttp 28536 16428 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:17:32,275 basehttp 28536 24460 "GET /swagger/?format=openapi HTTP/1.1" 200 18611
+WARNING 2025-12-10 15:18:06,888 log 28536 22436 Not Found: /accounts/logout/
+WARNING 2025-12-10 15:18:06,890 basehttp 28536 22436 "GET /accounts/logout/?next=/swagger/ HTTP/1.1" 404 3364
+INFO 2025-12-10 15:19:51,394 autoreload 28536 7288 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:19:54,749 autoreload 10296 14028 Watching for file changes with StatReloader
+INFO 2025-12-10 15:20:01,573 autoreload 10296 14028 C:\Users\samue\Documents\agromanager\config\settings\base.py changed, reloading.
+INFO 2025-12-10 15:20:02,660 autoreload 5236 9148 Watching for file changes with StatReloader
+INFO 2025-12-10 15:20:10,189 autoreload 5236 9148 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:20:11,838 autoreload 14912 15668 Watching for file changes with StatReloader
+INFO 2025-12-10 15:20:22,548 autoreload 14912 15668 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:20:24,698 autoreload 25728 20024 Watching for file changes with StatReloader
+WARNING 2025-12-10 15:20:44,015 log 26416 26300 Bad Request: /api/auth/register/
+WARNING 2025-12-10 15:20:44,025 log 26416 26300 Bad Request: /api/auth/register/
+INFO 2025-12-10 15:20:44,397 views 26416 26300 Nuevo usuario registrado: newuser
+WARNING 2025-12-10 15:20:44,404 log 26416 26300 Bad Request: /api/auth/register/
+WARNING 2025-12-10 15:21:08,510 log 24924 14808 Bad Request: /api/auth/register/
+INFO 2025-12-10 15:21:08,943 views 24924 14808 Nuevo usuario registrado: formuser
+WARNING 2025-12-10 15:21:08,952 log 24924 14808 Bad Request: /api/auth/register/
+INFO 2025-12-10 15:21:09,465 views 24924 14808 Nuevo usuario registrado: newuser
+WARNING 2025-12-10 15:21:09,480 log 24924 14808 Bad Request: /api/auth/register/
+WARNING 2025-12-10 15:21:35,608 log 1968 10084 Bad Request: /api/auth/password-reset-confirm/
+WARNING 2025-12-10 15:21:35,850 log 1968 10084 Bad Request: /api/auth/password-reset-confirm/
+INFO 2025-12-10 15:21:36,328 views 1968 10084 Contraseña actualizada para usuario: testuser
+INFO 2025-12-10 15:21:36,838 views 1968 10084 Email de recuperación enviado a: test@example.com
+WARNING 2025-12-10 15:21:37,085 log 1968 10084 Bad Request: /api/auth/password-reset/
+WARNING 2025-12-10 15:21:37,330 log 1968 10084 Bad Request: /api/auth/register/
+INFO 2025-12-10 15:21:37,573 views 1968 10084 Nuevo usuario registrado: formuser
+WARNING 2025-12-10 15:21:37,579 log 1968 10084 Bad Request: /api/auth/register/
+INFO 2025-12-10 15:21:37,812 views 1968 10084 Nuevo usuario registrado: newuser
+WARNING 2025-12-10 15:21:37,815 log 1968 10084 Bad Request: /api/auth/register/
+ERROR 2025-12-10 15:21:41,840 exceptions 1968 10084 Error 403 en UserProfileViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 175, in permission_denied
+    raise exceptions.PermissionDenied(detail=message, code=code)
+rest_framework.exceptions.PermissionDenied: Usted no tiene permiso para realizar esta acción.
+WARNING 2025-12-10 15:21:41,843 log 1968 10084 Forbidden: /api/core/profiles/
+ERROR 2025-12-10 15:21:44,337 exceptions 1968 10084 Error 401 en UserProfileViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
+    raise exceptions.NotAuthenticated()
+rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticación no se proveyeron.
+WARNING 2025-12-10 15:21:44,338 log 1968 10084 Unauthorized: /api/core/profiles/
+INFO 2025-12-10 15:21:56,331 autoreload 21584 18672 Watching for file changes with StatReloader
+WARNING 2025-12-10 15:22:00,134 log 25728 15124 Not Found: /
+WARNING 2025-12-10 15:22:00,142 basehttp 25728 15124 "GET / HTTP/1.1" 404 3283
+INFO 2025-12-10 15:22:04,968 basehttp 25728 15124 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-10 15:22:05,012 basehttp 25728 15124 "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:22:05,016 basehttp 25728 18880 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:22:05,023 basehttp 25728 18868 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:22:05,024 basehttp 25728 17300 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:22:05,027 basehttp 25728 15032 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:22:05,029 basehttp 25728 15124 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:22:05,031 basehttp 25728 17724 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:22:05,458 basehttp 25728 15124 "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+INFO 2025-12-10 15:22:05,458 basehttp 25728 17724 "GET /swagger/?format=openapi HTTP/1.1" 200 19780
+INFO 2025-12-10 15:22:23,027 basehttp 25728 17724 "GET /api/auth/register/ HTTP/1.1" 200 463
+WARNING 2025-12-10 15:22:37,242 log 25728 17724 Bad Request: /api/auth/register/
+WARNING 2025-12-10 15:22:37,244 basehttp 25728 17724 "POST /api/auth/register/ HTTP/1.1" 400 242
+WARNING 2025-12-10 15:23:03,398 log 25728 17724 Not Found: /
+WARNING 2025-12-10 15:23:03,398 basehttp 25728 17724 "GET / HTTP/1.1" 404 3283
+INFO 2025-12-10 15:23:11,698 basehttp 25728 17724 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-10 15:23:11,716 basehttp 25728 17300 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:23:11,716 basehttp 25728 15032 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:23:11,717 basehttp 25728 15124 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:23:11,717 basehttp 25728 18868 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:23:11,718 basehttp 25728 18880 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:23:11,719 basehttp 25728 17724 "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:23:11,723 basehttp 25728 17300 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:23:11,920 basehttp 25728 17300 "GET /swagger/?format=openapi HTTP/1.1" 200 19780
+INFO 2025-12-10 15:23:23,469 basehttp 25728 17300 "GET /api/auth/register/ HTTP/1.1" 200 463
+WARNING 2025-12-10 15:23:45,236 log 25728 17300 Not Found: /auth/register
+WARNING 2025-12-10 15:23:45,240 basehttp 25728 17300 "GET /auth/register HTTP/1.1" 404 3340
+WARNING 2025-12-10 15:23:50,443 log 25728 17300 Not Found: /auth/register/
+WARNING 2025-12-10 15:23:50,445 basehttp 25728 17300 "GET /auth/register/ HTTP/1.1" 404 3343
+INFO 2025-12-10 15:24:08,076 basehttp 25728 17300 "GET /api/auth/register/ HTTP/1.1" 200 8305
+INFO 2025-12-10 15:24:08,096 basehttp 25728 18868 "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:24:08,096 basehttp 25728 17724 "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:24:08,096 basehttp 25728 17300 "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:24:08,100 basehttp 25728 15124 "GET /static/rest_framework/js/jquery-3.5.1.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:24:08,100 basehttp 25728 15032 "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:24:08,103 basehttp 25728 18880 "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:24:08,112 basehttp 25728 18868 "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:24:08,115 basehttp 25728 17724 "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:24:08,115 basehttp 25728 17300 "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:24:08,117 basehttp 25728 15124 "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:24:08,124 basehttp 25728 15124 "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+INFO 2025-12-10 15:24:23,431 basehttp 25728 15124 "OPTIONS /api/auth/register/ HTTP/1.1" 200 8209
+INFO 2025-12-10 15:24:26,259 basehttp 25728 15124 "OPTIONS /api/auth/register/ HTTP/1.1" 200 8209
+INFO 2025-12-10 15:24:27,157 basehttp 25728 15124 "OPTIONS /api/auth/register/ HTTP/1.1" 200 8209
+INFO 2025-12-10 15:24:27,579 basehttp 25728 15124 "GET /api/auth/register/ HTTP/1.1" 200 8305
+INFO 2025-12-10 15:24:30,009 basehttp 25728 15124 "GET /api/auth/register/?format=api HTTP/1.1" 200 8360
+INFO 2025-12-10 15:24:32,127 basehttp 25728 15124 "GET /api/auth/register/?format=json HTTP/1.1" 200 463
+INFO 2025-12-10 15:25:35,063 autoreload 21584 18672 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:25:35,486 autoreload 25728 20024 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:25:36,252 autoreload 19860 27240 Watching for file changes with StatReloader
+INFO 2025-12-10 15:25:36,878 autoreload 4328 26756 Watching for file changes with StatReloader
+INFO 2025-12-10 15:25:42,894 autoreload 4328 26756 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:25:43,395 autoreload 19860 27240 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:25:43,798 autoreload 18128 16200 Watching for file changes with StatReloader
+INFO 2025-12-10 15:25:44,376 autoreload 12756 29276 Watching for file changes with StatReloader
+INFO 2025-12-10 15:26:02,049 autoreload 12756 29276 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:26:02,487 autoreload 18128 16200 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:26:03,100 autoreload 12728 2864 Watching for file changes with StatReloader
+INFO 2025-12-10 15:26:03,432 autoreload 10084 1968 Watching for file changes with StatReloader
+INFO 2025-12-10 15:26:07,118 autoreload 12728 2864 C:\Users\samue\Documents\agromanager\config\urls.py changed, reloading.
+INFO 2025-12-10 15:26:07,315 autoreload 10084 1968 C:\Users\samue\Documents\agromanager\config\urls.py changed, reloading.
+INFO 2025-12-10 15:26:08,247 autoreload 28780 26644 Watching for file changes with StatReloader
+INFO 2025-12-10 15:26:08,359 autoreload 27112 5068 Watching for file changes with StatReloader
+INFO 2025-12-10 15:26:09,815 autoreload 28780 26644 C:\Users\samue\Documents\agromanager\config\urls.py changed, reloading.
+INFO 2025-12-10 15:26:10,825 autoreload 10372 14724 Watching for file changes with StatReloader
+INFO 2025-12-10 15:26:31,565 autoreload 27112 5068 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:26:32,513 autoreload 19532 17640 Watching for file changes with StatReloader
+INFO 2025-12-10 15:26:37,559 autoreload 19532 17640 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:26:38,228 autoreload 7268 3512 Watching for file changes with StatReloader
+INFO 2025-12-10 15:26:42,052 autoreload 7268 3512 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:26:42,756 autoreload 29496 13168 Watching for file changes with StatReloader
+WARNING 2025-12-10 15:26:47,252 log 28256 2288 Bad Request: /api/auth/register/
+INFO 2025-12-10 15:26:47,608 views 28256 2288 Nuevo usuario registrado: formuser
+WARNING 2025-12-10 15:26:47,617 log 28256 2288 Bad Request: /api/auth/register/
+INFO 2025-12-10 15:26:48,033 views 28256 2288 Nuevo usuario registrado: newuser
+WARNING 2025-12-10 15:26:48,038 log 28256 2288 Bad Request: /api/auth/register/
+WARNING 2025-12-10 15:26:54,410 log 11944 11516 Bad Request: /api/auth/password-reset-confirm/
+WARNING 2025-12-10 15:26:54,776 log 11944 11516 Bad Request: /api/auth/password-reset-confirm/
+INFO 2025-12-10 15:26:55,497 views 11944 11516 Contraseña actualizada para usuario: testuser
+INFO 2025-12-10 15:26:56,217 views 11944 11516 Email de recuperación enviado a: test@example.com
+WARNING 2025-12-10 15:26:56,580 log 11944 11516 Bad Request: /api/auth/password-reset/
+WARNING 2025-12-10 15:26:56,941 log 11944 11516 Bad Request: /api/auth/register/
+INFO 2025-12-10 15:26:57,414 views 11944 11516 Nuevo usuario registrado: formuser
+WARNING 2025-12-10 15:26:57,430 log 11944 11516 Bad Request: /api/auth/register/
+INFO 2025-12-10 15:26:57,811 views 11944 11516 Nuevo usuario registrado: newuser
+WARNING 2025-12-10 15:26:57,816 log 11944 11516 Bad Request: /api/auth/register/
+ERROR 2025-12-10 15:27:02,712 exceptions 11944 11516 Error 403 en UserProfileViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 175, in permission_denied
+    raise exceptions.PermissionDenied(detail=message, code=code)
+rest_framework.exceptions.PermissionDenied: Usted no tiene permiso para realizar esta acción.
+WARNING 2025-12-10 15:27:02,713 log 11944 11516 Forbidden: /api/core/profiles/
+ERROR 2025-12-10 15:27:04,999 exceptions 11944 11516 Error 401 en UserProfileViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
+    raise exceptions.NotAuthenticated()
+rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticación no se proveyeron.
+WARNING 2025-12-10 15:27:05,000 log 11944 11516 Unauthorized: /api/core/profiles/
+INFO 2025-12-10 15:27:21,213 autoreload 20048 5720 Watching for file changes with StatReloader
+INFO 2025-12-10 15:27:27,108 basehttp 29496 19696 "GET /api/auth/register/?format=api HTTP/1.1" 200 8516
+INFO 2025-12-10 15:27:27,129 basehttp 29496 1208 "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:27:27,130 basehttp 29496 19696 "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:27:27,133 basehttp 29496 22700 "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:27:27,137 basehttp 29496 13816 "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:27:27,146 basehttp 29496 19696 "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:27:27,148 basehttp 29496 11524 "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:27:27,148 basehttp 29496 14804 "GET /static/rest_framework/js/jquery-3.5.1.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:27:27,152 basehttp 29496 1208 "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:27:27,157 basehttp 29496 13816 "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:27:27,158 basehttp 29496 22700 "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:27:27,164 basehttp 29496 22700 "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+WARNING 2025-12-10 15:28:09,173 log 29496 10276 Not Found: /swgger
+WARNING 2025-12-10 15:28:09,174 basehttp 29496 10276 "GET /swgger HTTP/1.1" 404 3319
+WARNING 2025-12-10 15:28:14,006 log 29496 10276 Not Found: /swgger/
+WARNING 2025-12-10 15:28:14,007 basehttp 29496 10276 "GET /swgger/ HTTP/1.1" 404 3322
+INFO 2025-12-10 15:28:33,035 basehttp 29496 16804 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-10 15:28:33,065 basehttp 29496 16804 "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:28:33,067 basehttp 29496 25956 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:28:33,073 basehttp 29496 5228 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:28:33,078 basehttp 29496 18628 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:28:33,079 basehttp 29496 14096 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:28:33,079 basehttp 29496 16804 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:28:33,080 basehttp 29496 11356 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:28:33,187 basehttp 29496 11356 "GET /swagger/?format=openapi HTTP/1.1" 200 18635
+WARNING 2025-12-10 15:28:41,767 log 29496 1808 Bad Request: /api/auth/register/
+WARNING 2025-12-10 15:28:41,768 basehttp 29496 1808 "POST /api/auth/register/ HTTP/1.1" 400 242
+INFO 2025-12-10 15:28:54,094 basehttp 29496 17716 "GET /api/auth/register/ HTTP/1.1" 200 463
+INFO 2025-12-10 15:29:02,368 basehttp 29496 14880 "GET /api/auth/register/ HTTP/1.1" 200 463
+INFO 2025-12-10 15:29:35,566 autoreload 12204 4668 Watching for file changes with StatReloader
+INFO 2025-12-10 15:29:57,086 views 29496 28688 Nuevo usuario registrado: testformuser
+INFO 2025-12-10 15:29:57,088 basehttp 29496 28688 "POST /api/auth/register/ HTTP/1.1" 201 157
+INFO 2025-12-10 15:30:06,526 views 29496 19708 Nuevo usuario registrado: testjsonuser
+INFO 2025-12-10 15:30:06,527 basehttp 29496 19708 "POST /api/auth/register/ HTTP/1.1" 201 157
+INFO 2025-12-10 15:30:15,332 basehttp 29496 17808 "GET /swagger/?id=b6bc2c79-08d4-48a7-9db4-b5eeedc2fd8e&vscodeBrowserReqId=1765398615015 HTTP/1.1" 200 2162
+INFO 2025-12-10 15:30:52,769 basehttp 29496 26196 "GET /api/auth/register/ HTTP/1.1" 200 463
+INFO 2025-12-10 15:31:52,164 basehttp 29496 25164 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-10 15:31:52,185 basehttp 29496 25164 "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:31:52,187 basehttp 29496 6664 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:31:52,192 basehttp 29496 29560 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:31:52,193 basehttp 29496 4996 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:31:52,195 basehttp 29496 17472 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:31:52,196 basehttp 29496 25164 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:31:52,199 basehttp 29496 19956 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:31:52,319 basehttp 29496 19956 "GET /swagger/?format=openapi HTTP/1.1" 200 18635
+INFO 2025-12-10 15:31:52,320 basehttp 29496 17472 "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+WARNING 2025-12-10 15:31:57,473 log 29496 26372 Bad Request: /api/auth/register/
+WARNING 2025-12-10 15:31:57,475 basehttp 29496 26372 "POST /api/auth/register/ HTTP/1.1" 400 242
+INFO 2025-12-10 15:32:30,200 autoreload 12204 4668 C:\Users\samue\Documents\agromanager\apps\core\serializers.py changed, reloading.
+INFO 2025-12-10 15:32:30,202 autoreload 29496 13168 C:\Users\samue\Documents\agromanager\apps\core\serializers.py changed, reloading.
+INFO 2025-12-10 15:32:31,127 autoreload 5712 15336 Watching for file changes with StatReloader
+INFO 2025-12-10 15:32:31,176 autoreload 16380 9772 Watching for file changes with StatReloader
+INFO 2025-12-10 15:32:37,400 autoreload 5712 15336 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:32:37,433 autoreload 16380 9772 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:32:38,292 autoreload 16192 23444 Watching for file changes with StatReloader
+INFO 2025-12-10 15:32:38,362 autoreload 24200 22192 Watching for file changes with StatReloader
+INFO 2025-12-10 15:32:48,697 autoreload 16192 23444 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:32:48,774 autoreload 24200 22192 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:32:49,555 autoreload 25572 24676 Watching for file changes with StatReloader
+INFO 2025-12-10 15:32:49,835 autoreload 18900 18908 Watching for file changes with StatReloader
+WARNING 2025-12-10 15:33:16,175 log 13520 8772 Bad Request: /api/auth/register/
+INFO 2025-12-10 15:33:16,422 views 13520 8772 Nuevo usuario registrado: formuser
+WARNING 2025-12-10 15:33:16,429 log 13520 8772 Bad Request: /api/auth/register/
+INFO 2025-12-10 15:33:16,672 views 13520 8772 Nuevo usuario registrado: newuser
+WARNING 2025-12-10 15:33:16,675 log 13520 8772 Bad Request: /api/auth/register/
+WARNING 2025-12-10 15:33:23,981 log 20628 9492 Bad Request: /api/auth/password-reset-confirm/
+WARNING 2025-12-10 15:33:24,353 log 20628 9492 Bad Request: /api/auth/password-reset-confirm/
+INFO 2025-12-10 15:33:25,062 views 20628 9492 Contraseña actualizada para usuario: testuser
+INFO 2025-12-10 15:33:25,736 views 20628 9492 Email de recuperación enviado a: test@example.com
+WARNING 2025-12-10 15:33:26,083 log 20628 9492 Bad Request: /api/auth/password-reset/
+WARNING 2025-12-10 15:33:26,387 log 20628 9492 Bad Request: /api/auth/register/
+INFO 2025-12-10 15:33:26,649 views 20628 9492 Nuevo usuario registrado: formuser
+WARNING 2025-12-10 15:33:26,652 log 20628 9492 Bad Request: /api/auth/register/
+INFO 2025-12-10 15:33:26,910 views 20628 9492 Nuevo usuario registrado: newuser
+WARNING 2025-12-10 15:33:26,915 log 20628 9492 Bad Request: /api/auth/register/
+ERROR 2025-12-10 15:33:31,356 exceptions 20628 9492 Error 403 en UserProfileViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 175, in permission_denied
+    raise exceptions.PermissionDenied(detail=message, code=code)
+rest_framework.exceptions.PermissionDenied: Usted no tiene permiso para realizar esta acción.
+WARNING 2025-12-10 15:33:31,357 log 20628 9492 Forbidden: /api/core/profiles/
+ERROR 2025-12-10 15:33:33,493 exceptions 20628 9492 Error 401 en UserProfileViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
+    raise exceptions.NotAuthenticated()
+rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticación no se proveyeron.
+WARNING 2025-12-10 15:33:33,494 log 20628 9492 Unauthorized: /api/core/profiles/
+INFO 2025-12-10 15:33:47,097 basehttp 25572 13620 "GET /api/core/health/ HTTP/1.1" 200 97
+INFO 2025-12-10 15:33:54,569 basehttp 25572 18492 "GET /api/core/health/ HTTP/1.1" 200 97
+INFO 2025-12-10 15:34:01,679 views 25572 19836 Nuevo usuario registrado: testuser_final
+INFO 2025-12-10 15:34:01,680 basehttp 25572 19836 "POST /api/auth/register/ HTTP/1.1" 201 160
+INFO 2025-12-10 15:34:04,525 basehttp 25572 20128 "GET /swagger/?id=b6bc2c79-08d4-48a7-9db4-b5eeedc2fd8e&vscodeBrowserReqId=1765398844198 HTTP/1.1" 200 2162
+INFO 2025-12-10 15:34:39,397 basehttp 25572 28752 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-10 15:34:39,428 basehttp 25572 25224 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:34:39,431 basehttp 25572 28752 "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+INFO 2025-12-10 15:34:39,436 basehttp 25572 8824 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:34:39,436 basehttp 25572 20268 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:34:39,445 basehttp 25572 19560 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:34:39,445 basehttp 25572 25224 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:34:39,455 basehttp 25572 23020 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 15:34:39,562 basehttp 25572 25224 "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+INFO 2025-12-10 15:34:39,562 basehttp 25572 23020 "GET /swagger/?format=openapi HTTP/1.1" 200 20243
+INFO 2025-12-10 15:36:01,665 autoreload 25572 24676 C:\Users\samue\Documents\agromanager\apps\core\views.py changed, reloading.
+INFO 2025-12-10 15:36:02,782 autoreload 2952 16968 Watching for file changes with StatReloader
