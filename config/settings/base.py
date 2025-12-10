@@ -35,34 +35,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'django_filters',
-    'sensores',
-    'apps.inventario',
-    'cultivos',
-
-
-]
-
-# Optional apps (only enable if installed in the environment)
-try:
-    import importlib
-
-    if importlib.util.find_spec('django_filters'):
-        INSTALLED_APPS.insert(INSTALLED_APPS.index('apps.inventario'), 'django_filters')
-except Exception:
-    # Keep going if optional packages are missing (tests/environment may be minimal)
-    pass
 
     # Apps del proyecto
-    "apps.core",
+    'apps.core',
+    'apps.cultivos',
+    'apps.inventario',
+    'apps.sensores',
 
     # Terceros
-    "rest_framework",
-    "rest_framework_simplejwt",
-    "corsheaders",
-    "drf_yasg",
-    "django_filters",
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'corsheaders',
+    'drf_yasg',
+    'django_filters',
+]
 
 
 # -------------------------------------------------------------

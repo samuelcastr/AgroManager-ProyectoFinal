@@ -6,6 +6,14 @@ from .models import Sensor, LecturaSensor
 from .serializers import SensorSerializer, LecturaSerializer
 
 
+class TiposViewSet(viewsets.ViewSet):
+	"""ViewSet para retornar tipos de sensores disponibles"""
+	
+	def list(self, request):
+		tipos = Sensor.TIPOS_SENSOR
+		return Response([{"value": tipo[0], "label": tipo[1]} for tipo in tipos])
+
+
 class SensorViewSet(viewsets.ModelViewSet):
 	queryset = Sensor.objects.all()
 	serializer_class = SensorSerializer

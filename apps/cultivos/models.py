@@ -11,6 +11,14 @@ class Variedad(models.Model):
 
 
 class Cultivo(models.Model):
+    TIPOS_CULTIVO = [
+        ('cereal', 'Cereal'),
+        ('leguminosa', 'Leguminosa'),
+        ('frutal', 'Frutal'),
+        ('hortaliza', 'Hortaliza'),
+        ('forraje', 'Forraje'),
+    ]
+    
     nombre = models.CharField(max_length=100)
     tipo = models.CharField(max_length=50)
     variedad = models.ForeignKey(

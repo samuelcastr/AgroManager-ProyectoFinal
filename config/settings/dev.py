@@ -1,30 +1,24 @@
 import os
 from .base import *
-from decouple import config
-
-
-# Development database overrides (use environment via python-decouple)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-        }
-    }
 
 # Desarrollo: DEBUG activado, hosts permisivos
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
-# Email backend para desarrollo (console)
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Development database: SQLite (simple para desarrollo)
+# Si necesitas MySQL, descomentar y configurar
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(os.path.dirname(BASE_DIR), 'db.sqlite3'),
+    }
+}
 
-# Swagger completo en dev
+# Email backend para desarrollo (console - muestra en terminal)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'noreply@agromanager.local'
+
+# Swagger settings para desarrollo
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'Bearer': {
@@ -34,5 +28,4 @@ SWAGGER_SETTINGS = {
         }
     },
     'USE_SESSION_AUTH': True,
-
 }

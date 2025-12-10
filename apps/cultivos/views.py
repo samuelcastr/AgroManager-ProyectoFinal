@@ -10,6 +10,14 @@ from .models import Cultivo, CicloSiembra
 from .serializers import CultivoSerializer, CicloSerializer
 
 
+class TiposViewSet(viewsets.ViewSet):
+    """ViewSet para retornar tipos de cultivos disponibles"""
+    
+    def list(self, request):
+        tipos = Cultivo.TIPOS_CULTIVO
+        return Response([{"value": tipo[0], "label": tipo[1]} for tipo in tipos])
+
+
 class CultivoViewSet(viewsets.ModelViewSet):
     permission_classes = []
     

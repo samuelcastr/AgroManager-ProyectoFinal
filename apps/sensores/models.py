@@ -2,13 +2,13 @@ from django.db import models
 
 
 class Sensor(models.Model):
-	TIPOS = [
+	TIPOS_SENSOR = [
 		('HUMEDAD', 'Humedad'),
 		('PH', 'pH'),
 		('TEMPERATURA', 'Temperatura'),
 	]
 	serial = models.CharField(max_length=100, unique=True)
-	tipo = models.CharField(max_length=20, choices=TIPOS)
+	tipo = models.CharField(max_length=20, choices=TIPOS_SENSOR)
 	ubicacion = models.CharField(max_length=255, blank=True, null=True)
 	creado = models.DateTimeField(auto_now_add=True)
 

@@ -2,6 +2,12 @@ from rest_framework import serializers
 from .models import Insumo, Lote, MovimientoStock
 
 
+class InsumoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Insumo
+        fields = ("id", "nombre", "unidad_medida", "stock_minimo")
+
+
 class LoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lote

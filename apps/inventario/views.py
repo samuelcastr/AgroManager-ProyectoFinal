@@ -5,9 +5,10 @@ from django.core.exceptions import ValidationError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import viewsets
 
 from .models import Insumo, Lote, MovimientoStock, registrar_salida_stock
-from .serializers import InsumoAlertSerializer, AjusteMasivoSerializer, MovimientoStockSerializer
+from .serializers import InsumoAlertSerializer, AjusteMasivoSerializer, MovimientoStockSerializer, InsumoSerializer, LoteSerializer
 
 
 class AlertasStockAPIView(APIView):
@@ -95,3 +96,18 @@ class AjusteMasivoAPIView(APIView):
 		out = MovimientoStockSerializer(movimientos_creados, many=True).data
 		return Response({"movimientos": out}, status=status.HTTP_201_CREATED)
 
+
+# ViewSets para los modelos principales
+class InsumoViewSet(viewsets.ModelViewSet):
+	queryset = Insumo.objects.all()
+	serializer_class = InsumoSerializer
+
+
+class LoteViewSet(viewsets.ModelViewSet):
+	queryset = Lote.objects.all()
+	serializer_class = LoteSerializer
+
+
+class MovimientoStockViewSet(viewsets.ModelViewSet):
+	queryset = MovimientoStock.objects.all()
+	serializer_class = MovimientoStockSerializer

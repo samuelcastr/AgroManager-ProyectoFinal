@@ -23,7 +23,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from apps.core.views import register, request_password_reset, confirm_password_reset
+from apps.core.views import RegisterAPIView, RequestPasswordResetAPIView, ConfirmPasswordResetAPIView
 
 urlpatterns = [
     # Admin
@@ -35,18 +35,18 @@ urlpatterns = [
     # Autenticación JWT
     path("api/auth/login/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    path("api/auth/register/", register, name="register"),
-    path("api/auth/password-reset/", request_password_reset, name="password_reset_request"),
-    path("api/auth/password-reset-confirm/", confirm_password_reset, name="password_reset_confirm"),
-    path('inventario/', include('apps.inventario.urls')),
+    path("api/auth/register/", RegisterAPIView.as_view(), name="register"),
+    path("api/auth/password-reset/", RequestPasswordResetAPIView.as_view(), name="password_reset_request"),
+    path("api/auth/password-reset-confirm/", ConfirmPasswordResetAPIView.as_view(), name="password_reset_confirm"),
+
+    # Apps adicionales
     path('api/inventario/', include('apps.inventario.urls')),
-    path('api/cultivos', include('cultivos.urls')),
-    path('api/sensores', include('sensores.urls')),
+    path('api/cultivos/', include('apps.cultivos.urls')),
+    path('api/sensores/', include('apps.sensores.urls')),
 
     # Swagger
     path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="swagger-ui"),
     path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="redoc-ui"),
     path("swagger.json", schema_view.without_ui(cache_timeout=0), name="schema-json"),
-
 ]
 
