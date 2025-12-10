@@ -15,6 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+
 from django.urls import path, include
 from config.swagger import schema_view
 
@@ -40,6 +41,7 @@ urlpatterns = [
     path("api/auth/password-reset-confirm/", confirm_password_reset, name="password_reset_confirm"),
     path('inventario/', include('apps.inventario.urls')),
     path('api/inventario/', include('apps.inventario.urls')),
+    path('api/', include('cultivos.urls')),
 
     # Swagger
     path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="swagger-ui"),

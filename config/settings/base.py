@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'apps.inventario',
+    'cultivos',
+
 ]
 
 # Optional apps (only enable if installed in the environment)
@@ -58,7 +60,7 @@ except Exception:
     "corsheaders",
     "drf_yasg",
     "django_filters",
-]
+
 
 # -------------------------------------------------------------
 # 🔥 MIDDLEWARE
@@ -165,6 +167,7 @@ USE_TZ = True
 # 🔥 STATIC FILES
 # -------------------------------------------------------------
 STATIC_URL = 'static/'
+
 
 # -------------------------------------------------------------
 # 🔥 CORS & SECURITY
