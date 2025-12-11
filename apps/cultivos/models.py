@@ -20,7 +20,7 @@ class Cultivo(models.Model):
     ]
     
     nombre = models.CharField(max_length=100)
-    tipo = models.CharField(max_length=50)
+    tipo = models.CharField(max_length=50, choices=TIPOS_CULTIVO)
     variedad = models.ForeignKey(
         Variedad, on_delete=models.SET_NULL, null=True, blank=True
     )

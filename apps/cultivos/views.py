@@ -11,12 +11,27 @@ from .serializers import CultivoSerializer, CicloSerializer
 
 
 class TiposViewSet(viewsets.ViewSet):
-    """ViewSet para retornar tipos de cultivos disponibles"""
+    """ViewSet para retornar tipos de cultivos disponibles con estadísticas"""
     permission_classes = [IsAuthenticated]
     
     def list(self, request):
         tipos = Cultivo.TIPOS_CULTIVO
-        return Response([{"value": tipo[0], "label": tipo[1]} for tipo in tipos])
+        resultado = []
+        
+        for tipo_value, tipo_label in tipos:
+            # Contar cultivos de este tipo
+            cultivos = Cultivo.objects.filter(tipo=tipo_value)
+            count = cultivos.count()
+            ids = list(cultivos.values_list('id', flat=True))
+            
+            resultado.append({
+                "value": tipo_value,
+                "label": tipo_label,
+                "count": count,
+                "ids": ids
+            })
+        
+        return Response(resultado)
 
 
 class CultivoViewSet(viewsets.ModelViewSet):

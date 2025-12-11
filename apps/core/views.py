@@ -223,48 +223,58 @@ class RequestPasswordResetAPIView(APIView):
         }
     )
     def post(self, request, *args, **kwargs):
-        """Solicitar recuperación de contraseña"""
+        """Solicitar recuperación de contraseña
+
+        El email enviado contiene el token directamente (para que el cliente
+        pueda construir el enlace por su cuenta).
+        """
         serializer = RequestPasswordResetSerializer(data=request.data)
         if serializer.is_valid():
-            email = serializer.validated_data['email']
-            user = User.objects.get(email=email)
-            
-            # Crear token de recuperación
-            reset_token = PasswordResetToken.create_token(user)
-            
-            # Preparar URL para recuperación
-            reset_url = f"{settings.FRONTEND_URL}/reset-password/{reset_token.token}" if hasattr(settings, 'FRONTEND_URL') else f"http://localhost:3000/reset-password/{reset_token.token}"
-            
-            # Enviar email
             try:
-                send_mail(
-                    subject='Recuperación de contraseña - AgroManager',
-                    message=f"""Hola {user.first_name},
+                email = serializer.validated_data['email']
+                user = User.objects.get(email=email)
 
-Has solicitado recuperar tu contraseña. Haz clic en el siguiente enlace:
+                # Crear token de recuperación
+                reset_token = PasswordResetToken.create_token(user)
 
-{reset_url}
+                # Construir mensaje que incluye el token explícitamente
+                message = f"""Hola {user.first_name},
 
-Este enlace expira en 24 horas.
+Has solicitado recuperar tu contraseña. Utiliza el siguiente token para restablecerla:
+
+{reset_token.token}
+
+El token expira en 24 horas.
 
 Saludos,
-Equipo AgroManager""",
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[user.email],
-                    fail_silently=False,
-                )
-                logger.info(f"Email de recuperación enviado a: {user.email}")
+Equipo AgroManager"""
+
+                # Enviar email
+                try:
+                    send_mail(
+                        subject='Recuperación de contraseña - AgroManager',
+                        message=message,
+                        from_email=settings.DEFAULT_FROM_EMAIL,
+                        recipient_list=[user.email],
+                        fail_silently=False,
+                    )
+                    logger.info(f"Email de recuperación enviado a: {user.email}")
+                except Exception as e:
+                    logger.error(f"Error enviando email: {str(e)}")
+                    if settings.DEBUG:
+                        return Response({
+                            'message': 'Email no pudo ser enviado (modo DEBUG)',
+                            'token': reset_token.token,
+                        }, status=status.HTTP_200_OK)
+                    return Response({'error': 'No se pudo enviar el email'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+                return Response({'message': 'Email de recuperación enviado.'}, status=status.HTTP_200_OK)
+            except User.DoesNotExist:
+                logger.warning(f"Intento de recuperación con email inexistente: {serializer.validated_data.get('email')}")
+                return Response({'error': 'Email no encontrado en el sistema'}, status=status.HTTP_404_NOT_FOUND)
             except Exception as e:
-                logger.error(f"Error enviando email: {str(e)}")
-                if settings.DEBUG:
-                    return Response({
-                        'message': 'Email no pudo ser enviado',
-                        'token': reset_token.token,
-                        'reset_url': reset_url,
-                    }, status=status.HTTP_200_OK)
-                return Response({'error': 'No se pudo enviar el email'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            
-            return Response({'message': 'Email de recuperación enviado.'}, status=status.HTTP_200_OK)
+                logger.error(f"Error al crear token de recuperación: {str(e)}")
+                return Response({'error': 'Error al procesar la solicitud'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def get(self, request, *args, **kwargs):

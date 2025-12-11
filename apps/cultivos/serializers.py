@@ -84,7 +84,6 @@ class CultivoSerializer(serializers.ModelSerializer):
         fields = ['id', 'nombre', 'tipo', 'variedad', 'unidad_productiva', 'sensores', 'ciclos', 'created_at', 'updated_at']
         extra_kwargs = {
             'nombre': {'help_text': 'Nombre descriptivo del cultivo (ej: Maiz Sur A)'},
-            'tipo': {'help_text': 'Tipo de cultivo. Opciones: cereal, leguminosa, frutal, hortaliza, forraje'},
             'unidad_productiva': {'help_text': 'Ubicacion o identificador de la unidad productiva (opcional)'},
             'sensores': {'help_text': 'JSON con configuracion de sensores asociados (opcional)'},
         }
