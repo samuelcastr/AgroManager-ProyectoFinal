@@ -20,6 +20,9 @@ from apps.core.serializers import (
     RegisterSerializer, RequestPasswordResetSerializer, PasswordResetConfirmSerializer
 )
 from apps.core.permissions import IsOwner, IsAdminUser, IsAdminOrOwner
+from django.contrib.auth import login
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 
 logger = logging.getLogger('apps')
 
@@ -328,4 +331,60 @@ class ConfirmPasswordResetAPIView(APIView):
             'description': 'Confirmar recuperación de contraseña',
             'required_fields': ['token', 'password', 'password2'],
         })
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    """
+    Extiende TokenObtainPairView para además crear sesión Django y devolver permisos.
+    
+    Responde con:
+    - access: Token JWT de acceso
+    - refresh: Token JWT para refrescar
+    - user: Información del usuario autenticado
+    - permissions: Lista de permisos que tiene el usuario en el sistema
+    - groups: Grupos a los que pertenece el usuario
+    """
+    permission_classes = ()
+    authentication_classes = ()
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+
+        try:
+            serializer.is_valid(raise_exception=True)
+        except TokenError as e:
+            raise InvalidToken(e.args[0])
+
+        # Obtener el usuario autenticado del serializer
+        user = getattr(serializer, 'user', None)
+        
+        response_data = serializer.validated_data.copy()
+        
+        if user is not None:
+            # Crear sesión Django
+            try:
+                login(request, user)
+            except Exception as e:
+                logger.warning(f"No se pudo crear sesión para {user.username}: {str(e)}")
+            
+            # Obtener permisos del usuario
+            user_permissions = list(user.user_permissions.values_list('codename', flat=True))
+            user_groups = list(user.groups.values_list('name', flat=True))
+            
+            # Enriquecer respuesta con información del usuario y permisos
+            response_data['user'] = {
+                'id': user.id,
+                'username': user.username,
+                'email': user.email,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'is_staff': user.is_staff,
+                'is_superuser': user.is_superuser,
+            }
+            response_data['permissions'] = user_permissions
+            response_data['groups'] = user_groups
+            
+            logger.info(f"Usuario {user.username} autenticado con {len(user_permissions)} permisos y {len(user_groups)} grupos")
+
+        return Response(response_data, status=status.HTTP_200_OK)
 
