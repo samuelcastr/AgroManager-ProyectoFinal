@@ -1639,3 +1639,84 @@ INFO 2025-12-10 17:14:09,096 basehttp 632 15064 "POST /api/auth/login/ HTTP/1.1"
 INFO 2025-12-10 17:14:11,159 basehttp 632 27940 "GET /api/cultivos/ HTTP/1.1" 200 1782
 INFO 2025-12-10 17:14:28,983 autoreload 632 14064 C:\Users\samue\Documents\agromanager\apps\cultivos\serializers.py changed, reloading.
 INFO 2025-12-10 17:14:31,418 autoreload 20932 27868 Watching for file changes with StatReloader
+INFO 2025-12-10 17:14:39,294 basehttp 20932 11472 "POST /api/auth/login/ HTTP/1.1" 200 483
+INFO 2025-12-10 17:14:41,392 basehttp 20932 16716 "POST /api/cultivos/ HTTP/1.1" 201 438
+INFO 2025-12-10 17:14:43,442 basehttp 20932 22092 "GET /api/cultivos/ HTTP/1.1" 200 2221
+ERROR 2025-12-10 17:17:50,386 exceptions 20932 10100 Error 400 en CultivoViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\serializers.py", line 235, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'variedad': {'datos_agronomicos': [ErrorDetail(string='El valor debe ser JSON válido.', code='invalid')]}}
+WARNING 2025-12-10 17:17:50,500 log 20932 10100 Bad Request: /api/cultivos/
+WARNING 2025-12-10 17:17:50,501 basehttp 20932 10100 "POST /api/cultivos/ HTTP/1.1" 400 16888
+INFO 2025-12-10 17:17:50,549 basehttp 20932 10100 "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+INFO 2025-12-10 17:17:50,550 basehttp 20932 28552 "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+INFO 2025-12-10 17:17:50,557 basehttp 20932 13656 "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+INFO 2025-12-10 17:17:50,560 basehttp 20932 11944 "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+INFO 2025-12-10 17:17:50,567 basehttp 20932 10100 "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+INFO 2025-12-10 17:17:50,569 basehttp 20932 28552 "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 17:17:50,571 basehttp 20932 22108 "GET /static/rest_framework/js/jquery-3.5.1.min.js HTTP/1.1" 304 0
+INFO 2025-12-10 17:17:50,572 basehttp 20932 13656 "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+INFO 2025-12-10 17:17:50,574 basehttp 20932 11944 "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+INFO 2025-12-10 17:17:50,577 basehttp 20932 27876 "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+INFO 2025-12-10 17:17:50,579 basehttp 20932 22108 "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+INFO 2025-12-10 17:17:57,975 basehttp 20932 22108 "POST /api/cultivos/ HTTP/1.1" 201 17686
+INFO 2025-12-10 17:19:16,586 autoreload 20932 27868 C:\Users\samue\Documents\agromanager\apps\core\serializers.py changed, reloading.
+INFO 2025-12-10 17:19:17,903 autoreload 17524 27108 Watching for file changes with StatReloader
+INFO 2025-12-10 17:20:33,496 autoreload 17524 27108 C:\Users\samue\Documents\agromanager\config\settings\dev.py changed, reloading.
+INFO 2025-12-10 17:20:34,841 autoreload 21844 24584 Watching for file changes with StatReloader
+INFO 2025-12-10 17:22:19,577 autoreload 21844 24584 C:\Users\samue\Documents\agromanager\config\settings\dev.py changed, reloading.
+INFO 2025-12-10 17:22:20,295 autoreload 1324 7104 Watching for file changes with StatReloader
+INFO 2025-12-10 17:28:18,164 autoreload 14968 15284 Watching for file changes with StatReloader
+INFO 2025-12-10 17:36:00,580 autoreload 1324 7104 C:\Users\samue\Documents\agromanager\config\settings\dev.py changed, reloading.
+INFO 2025-12-10 17:36:01,177 autoreload 14968 15284 C:\Users\samue\Documents\agromanager\config\settings\dev.py changed, reloading.
+INFO 2025-12-10 17:36:02,333 autoreload 26716 19664 Watching for file changes with StatReloader
+INFO 2025-12-11 10:53:53,153 autoreload 12852 1776 Watching for file changes with StatReloader
+INFO 2025-12-11 10:54:13,341 autoreload 12852 1776 C:\Users\samue\Documents\agromanager\config\settings\dev.py changed, reloading.
+INFO 2025-12-11 10:54:14,546 autoreload 2780 15484 Watching for file changes with StatReloader
+INFO 2025-12-11 10:54:29,094 autoreload 10952 5108 Watching for file changes with StatReloader
+WARNING 2025-12-11 10:54:46,786 log 10952 9092 Not Found: /
+WARNING 2025-12-11 10:54:46,786 basehttp 10952 9092 "GET / HTTP/1.1" 404 3624
+WARNING 2025-12-11 10:54:46,992 log 10952 9092 Not Found: /favicon.ico
+WARNING 2025-12-11 10:54:46,993 basehttp 10952 9092 "GET /favicon.ico HTTP/1.1" 404 3675
+INFO 2025-12-11 10:54:53,518 autoreload 8212 13256 Watching for file changes with StatReloader
+INFO 2025-12-11 10:55:04,219 basehttp 8212 9200 "GET /swagger/ HTTP/1.1" 200 2390
+INFO 2025-12-11 10:55:04,519 basehttp 8212 9200 "GET /static/drf-yasg/style.css HTTP/1.1" 200 1047
+INFO 2025-12-11 10:55:04,522 basehttp 8212 9200 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 200 14964
+INFO 2025-12-11 10:55:04,591 basehttp 8212 7732 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 200 145206
+INFO 2025-12-11 10:55:04,594 basehttp 8212 10456 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 200 322863
+INFO 2025-12-11 10:55:04,599 basehttp 8212 4124 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 200 56904
+INFO 2025-12-11 10:55:04,606 basehttp 8212 7748 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 200 2093
+INFO 2025-12-11 10:55:04,613 basehttp 8212 12672 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 200 1046583
+INFO 2025-12-11 10:55:04,819 basehttp 8212 12672 "GET /swagger/?format=openapi HTTP/1.1" 200 43210
+INFO 2025-12-11 10:55:04,819 basehttp 8212 7748 "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 200 628
+INFO 2025-12-11 10:55:36,775 basehttp 8212 13916 "GET /api/core/health/ HTTP/1.1" 200 97
+INFO 2025-12-11 13:00:37,085 autoreload 14888 21404 Watching for file changes with StatReloader
+INFO 2025-12-11 13:21:10,701 basehttp 14888 10456 "GET /swagger/ HTTP/1.1" 200 2162
+INFO 2025-12-11 13:21:11,218 basehttp 14888 20996 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 200 145206
+INFO 2025-12-11 13:21:11,219 basehttp 14888 10456 "GET /static/drf-yasg/style.css HTTP/1.1" 200 1047
+INFO 2025-12-11 13:21:11,228 basehttp 14888 20996 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 200 14964
+INFO 2025-12-11 13:21:11,263 basehttp 14888 13888 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 200 1046583
+INFO 2025-12-11 13:21:11,366 basehttp 14888 12664 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 200 2093
+INFO 2025-12-11 13:21:11,379 basehttp 14888 5748 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 200 56904
+INFO 2025-12-11 13:21:11,383 basehttp 14888 18196 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 200 322863
+INFO 2025-12-11 13:21:11,534 basehttp 14888 18196 "GET /swagger/?format=openapi HTTP/1.1" 200 43210
+INFO 2025-12-11 13:21:11,538 basehttp 14888 5748 "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 200 628
+ERROR 2025-12-11 13:23:17,319 exceptions 14888 5748 Error 401 en UserProfileViewSet
+Traceback (most recent call last):
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+  File "C:\Users\samue\AppData\Local\Programs\Python\Python312\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
+    raise exceptions.NotAuthenticated()
+rest_framework.exceptions.NotAuthenticated: Las credenciales de autenticación no se proveyeron.
+WARNING 2025-12-11 13:23:17,324 log 14888 5748 Unauthorized: /api/core/profiles/
+WARNING 2025-12-11 13:23:17,327 basehttp 14888 5748 "POST /api/core/profiles/ HTTP/1.1" 401 65
