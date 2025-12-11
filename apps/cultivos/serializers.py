@@ -81,11 +81,11 @@ class CultivoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cultivo
-        fields = ['id', 'nombre', 'tipo', 'variedad', 'unidad_productiva', 'sensores', 'ciclos', 'created_at', 'updated_at']
+        fields = ['id', 'nombre', 'tipo', 'variedad', 'unidad_productiva', 'sensor', 'ciclos', 'created_at', 'updated_at']
         extra_kwargs = {
             'nombre': {'help_text': 'Nombre descriptivo del cultivo (ej: Maiz Sur A)'},
             'unidad_productiva': {'help_text': 'Ubicacion o identificador de la unidad productiva (opcional)'},
-            'sensores': {'help_text': 'JSON con configuracion de sensores asociados (opcional)'},
+            'sensor': {'help_text': 'Sensor asociado al cultivo'},
         }
 
     def create(self, validated_data):

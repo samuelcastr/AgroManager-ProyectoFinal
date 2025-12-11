@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-
 class Variedad(models.Model):
     nombre = models.CharField(max_length=100, unique=True)
     descripcion = models.TextField(blank=True, null=True)
@@ -24,8 +23,12 @@ class Cultivo(models.Model):
     variedad = models.ForeignKey(
         Variedad, on_delete=models.SET_NULL, null=True, blank=True
     )
-    unidad_productiva = models.CharField(max_length=100, blank=True, null=True)
-    sensores = models.JSONField(blank=True, null=True)
+    unidad_productiva = models.CharField(max_length=100)
+    sensor = models.ForeignKey(
+        'sensores.Sensor',
+        on_delete=models.CASCADE,
+        related_name='sensores_cultivos'
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

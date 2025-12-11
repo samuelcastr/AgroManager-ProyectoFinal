@@ -7,16 +7,16 @@ ALLOWED_HOSTS = ['*']
 
 # Development database: SQLite (simple para desarrollo)
 # Si necesitas MySQL, descomentar y configurar
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(os.path.dirname(BASE_DIR), 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(os.path.dirname(BASE_DIR), 'db.sqlite3'),
+#     }
+# }
 
 # Email backend para desarrollo (console - muestra en terminal)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'noreply@agromanager.local'
+DEFAULT_FROM_EMAIL = 'service@agromanager.local'
 
 # Swagger settings para desarrollo
 SWAGGER_SETTINGS = {
