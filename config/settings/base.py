@@ -6,6 +6,7 @@ import os
 import logging
 from pathlib import Path
 from datetime import timedelta
+import dj_database_url
 
 
 logger = logging.getLogger(__name__)
@@ -111,20 +112,28 @@ SIMPLE_JWT = {
 
 # -------------------------------------------------------------
 # 🔥 BASE DE DATOS
-# -------------------------------------------------------------
+# Soporta DATABASE_URL o configuración manual
+# Priority: DATABASE_URL > Manual config
+# ---------------------------------------------------------------
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    f"mysql://{os.getenv('DB_USER', 'root')}:{os.getenv('DB_PASSWORD', '')}@{os.getenv('DB_HOST', 'localhost')}:{os.getenv('DB_PORT', '3306')}/{os.getenv('DB_NAME', 'agromanager')}"
+)
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST", "localhost"),
-        "PORT": os.getenv("DB_PORT", "3306"),
-        "OPTIONS": {
-            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
-    }
+    "default": dj_database_url.config(
+        default=DATABASE_URL,
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
+
+# Configurar OPTIONS para MySQL si es necesario
+if DATABASES['default']['ENGINE'] == 'django.db.backends.mysql':
+    DATABASES['default']['OPTIONS'] = {
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        'charset': 'utf8mb4',
+    }
 
 # -------------------------------------------------------------
 # 🔥 PASSWORDS
