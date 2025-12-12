@@ -4,7 +4,7 @@ from .views import CultivoViewSet, TiposViewSet
 
 router = DefaultRouter()
 router.register(r'tipos', TiposViewSet, basename='tipos-cultivo')
-router.register(r'', CultivoViewSet, basename='cultivos')
+router.register(r'cultivos', CultivoViewSet, basename='cultivos')
 
 urlpatterns = [
     path('', include(router.urls)),

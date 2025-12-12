@@ -13,7 +13,21 @@ class TiposViewSet(viewsets.ViewSet):
 	
 	def list(self, request):
 		tipos = Sensor.TIPOS_SENSOR
-		return Response([{"value": tipo[0], "label": tipo[1]} for tipo in tipos])
+		resultado = []
+
+		for tipo_value, tipo_label in tipos:
+			sensores = Sensor.objects.filter(tipo=tipo_value)
+			count = sensores.count()
+			ids = list(sensores.values_list('id', flat=True))
+
+			resultado.append({
+				"value": tipo_value,
+				"label": tipo_label,
+				"count": count,
+				"ids": ids,
+			})
+
+		return Response(resultado)
 
 
 class SensorViewSet(viewsets.ModelViewSet):

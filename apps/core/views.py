@@ -20,6 +20,9 @@ from apps.core.serializers import (
     RegisterSerializer, RequestPasswordResetSerializer, PasswordResetConfirmSerializer
 )
 from apps.core.permissions import IsOwner, IsAdminUser, IsAdminOrOwner
+from django.contrib.auth import login
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 
 logger = logging.getLogger('apps')
 
@@ -223,48 +226,58 @@ class RequestPasswordResetAPIView(APIView):
         }
     )
     def post(self, request, *args, **kwargs):
-        """Solicitar recuperación de contraseña"""
+        """Solicitar recuperación de contraseña
+
+        El email enviado contiene el token directamente (para que el cliente
+        pueda construir el enlace por su cuenta).
+        """
         serializer = RequestPasswordResetSerializer(data=request.data)
         if serializer.is_valid():
-            email = serializer.validated_data['email']
-            user = User.objects.get(email=email)
-            
-            # Crear token de recuperación
-            reset_token = PasswordResetToken.create_token(user)
-            
-            # Preparar URL para recuperación
-            reset_url = f"{settings.FRONTEND_URL}/reset-password/{reset_token.token}" if hasattr(settings, 'FRONTEND_URL') else f"http://localhost:3000/reset-password/{reset_token.token}"
-            
-            # Enviar email
             try:
-                send_mail(
-                    subject='Recuperación de contraseña - AgroManager',
-                    message=f"""Hola {user.first_name},
+                email = serializer.validated_data['email']
+                user = User.objects.get(email=email)
 
-Has solicitado recuperar tu contraseña. Haz clic en el siguiente enlace:
+                # Crear token de recuperación
+                reset_token = PasswordResetToken.create_token(user)
 
-{reset_url}
+                # Construir mensaje que incluye el token explícitamente
+                message = f"""Hola {user.first_name},
 
-Este enlace expira en 24 horas.
+Has solicitado recuperar tu contraseña. Utiliza el siguiente token para restablecerla:
+
+{reset_token.token}
+
+El token expira en 24 horas.
 
 Saludos,
-Equipo AgroManager""",
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[user.email],
-                    fail_silently=False,
-                )
-                logger.info(f"Email de recuperación enviado a: {user.email}")
+Equipo AgroManager"""
+
+                # Enviar email
+                try:
+                    send_mail(
+                        subject='Recuperación de contraseña - AgroManager',
+                        message=message,
+                        from_email=settings.DEFAULT_FROM_EMAIL,
+                        recipient_list=[user.email],
+                        fail_silently=False,
+                    )
+                    logger.info(f"Email de recuperación enviado a: {user.email}")
+                except Exception as e:
+                    logger.error(f"Error enviando email: {str(e)}")
+                    if settings.DEBUG:
+                        return Response({
+                            'message': 'Email no pudo ser enviado (modo DEBUG)',
+                            'token': reset_token.token,
+                        }, status=status.HTTP_200_OK)
+                    return Response({'error': 'No se pudo enviar el email'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+                return Response({'message': 'Email de recuperación enviado.'}, status=status.HTTP_200_OK)
+            except User.DoesNotExist:
+                logger.warning(f"Intento de recuperación con email inexistente: {serializer.validated_data.get('email')}")
+                return Response({'error': 'Email no encontrado en el sistema'}, status=status.HTTP_404_NOT_FOUND)
             except Exception as e:
-                logger.error(f"Error enviando email: {str(e)}")
-                if settings.DEBUG:
-                    return Response({
-                        'message': 'Email no pudo ser enviado',
-                        'token': reset_token.token,
-                        'reset_url': reset_url,
-                    }, status=status.HTTP_200_OK)
-                return Response({'error': 'No se pudo enviar el email'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            
-            return Response({'message': 'Email de recuperación enviado.'}, status=status.HTTP_200_OK)
+                logger.error(f"Error al crear token de recuperación: {str(e)}")
+                return Response({'error': 'Error al procesar la solicitud'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def get(self, request, *args, **kwargs):
@@ -318,4 +331,60 @@ class ConfirmPasswordResetAPIView(APIView):
             'description': 'Confirmar recuperación de contraseña',
             'required_fields': ['token', 'password', 'password2'],
         })
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    """
+    Extiende TokenObtainPairView para además crear sesión Django y devolver permisos.
+    
+    Responde con:
+    - access: Token JWT de acceso
+    - refresh: Token JWT para refrescar
+    - user: Información del usuario autenticado
+    - permissions: Lista de permisos que tiene el usuario en el sistema
+    - groups: Grupos a los que pertenece el usuario
+    """
+    permission_classes = ()
+    authentication_classes = ()
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+
+        try:
+            serializer.is_valid(raise_exception=True)
+        except TokenError as e:
+            raise InvalidToken(e.args[0])
+
+        # Obtener el usuario autenticado del serializer
+        user = getattr(serializer, 'user', None)
+        
+        response_data = serializer.validated_data.copy()
+        
+        if user is not None:
+            # Crear sesión Django
+            try:
+                login(request, user)
+            except Exception as e:
+                logger.warning(f"No se pudo crear sesión para {user.username}: {str(e)}")
+            
+            # Obtener permisos del usuario
+            user_permissions = list(user.user_permissions.values_list('codename', flat=True))
+            user_groups = list(user.groups.values_list('name', flat=True))
+            
+            # Enriquecer respuesta con información del usuario y permisos
+            response_data['user'] = {
+                'id': user.id,
+                'username': user.username,
+                'email': user.email,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'is_staff': user.is_staff,
+                'is_superuser': user.is_superuser,
+            }
+            response_data['permissions'] = user_permissions
+            response_data['groups'] = user_groups
+            
+            logger.info(f"Usuario {user.username} autenticado con {len(user_permissions)} permisos y {len(user_groups)} grupos")
+
+        return Response(response_data, status=status.HTTP_200_OK)
 

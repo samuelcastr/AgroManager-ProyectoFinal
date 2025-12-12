@@ -19,11 +19,15 @@ from django.urls import path, include
 from config.swagger import schema_view
 
 from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
     TokenRefreshView,
 )
 
-from apps.core.views import RegisterAPIView, RequestPasswordResetAPIView, ConfirmPasswordResetAPIView
+from apps.core.views import (
+    RegisterAPIView,
+    RequestPasswordResetAPIView,
+    ConfirmPasswordResetAPIView,
+    CustomTokenObtainPairView,
+)
 
 urlpatterns = [
     # Admin
@@ -33,7 +37,7 @@ urlpatterns = [
     path("api/core/", include("apps.core.urls")),
 
     # Autenticación JWT
-    path("api/auth/login/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/auth/login/", CustomTokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/auth/register/", RegisterAPIView.as_view(), name="register"),
     path("api/auth/password-reset/", RequestPasswordResetAPIView.as_view(), name="password_reset_request"),
