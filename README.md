@@ -115,6 +115,12 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+### 3.1 actualizar tools
+
+```bash
+pip install --upgrade setuptools
+```
+
 ### 4. Configurar variables de entorno
 
 ```bash
