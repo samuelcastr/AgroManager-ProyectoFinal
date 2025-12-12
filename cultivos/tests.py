@@ -1,10 +1,54 @@
 from django.test import TestCase
-from rest_framework.test import APITestCase
+from rest_framework.test import APITestCase, APIClient
 from rest_framework import status
 from django.urls import reverse
+from django.db import transaction
 from .models import Cultivo, CicloSiembra, Variedad
 from .serializers import CicloSerializer
 from datetime import date, timedelta
+
+
+class TransaccionesAtomicasTestCase(TestCase):
+	"""Tests para verificar que las transacciones atómicas funcionan correctamente"""
+
+	def setUp(self):
+		self.variedad = Variedad.objects.create(
+			nombre="Variedad Test",
+			descripcion="Variedad para pruebas"
+		)
+
+	def test_transaccion_atomica_cultivo_rollback(self):
+		"""Verificar que si ocurre un error, la transacción se revierte"""
+		initial_count = Cultivo.objects.count()
+		
+		try:
+			with transaction.atomic():
+				cultivo = Cultivo.objects.create(
+					nombre="Cultivo Test",
+					tipo="cereal",
+					variedad=self.variedad
+				)
+				# Simular error
+				raise ValueError("Error simulado")
+		except ValueError:
+			pass
+		
+		# Verificar que el cultivo NO se creó
+		self.assertEqual(Cultivo.objects.count(), initial_count)
+
+	def test_transaccion_atomica_cultivo_commit(self):
+		"""Verificar que si no hay error, la transacción se ejecuta"""
+		initial_count = Cultivo.objects.count()
+		
+		with transaction.atomic():
+			cultivo = Cultivo.objects.create(
+				nombre="Cultivo Test",
+				tipo="cereal",
+				variedad=self.variedad
+			)
+		
+		# Verificar que el cultivo se creó
+		self.assertEqual(Cultivo.objects.count(), initial_count + 1)
 
 
 class CicloValidationTests(TestCase):
