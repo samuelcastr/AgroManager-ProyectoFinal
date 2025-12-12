@@ -1,5 +1,7 @@
 # 🌾 AgroManager API — Backend Profesional con Django REST Framework
 
+https://binding-honor-agromanager-b1a2d635.koyeb.app/api/auth/login/
+
 > Una API REST robusta, segura y escalable para gestión agrícola integral. Desarrollada con Django, JWT, filtrado avanzado y despliegue en producción.
 
 **Versión:** 1.0.0  
