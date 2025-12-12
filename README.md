@@ -627,3 +627,5 @@ Este proyecto está bajo licencia **MIT License**. Ver `LICENSE` para más detal
 
 **Última actualización:** Diciembre 5, 2025  
 **Versión:** 1.0.0-alpha
+
+https://binding-honor-agromanager-b1a2d635.koyeb.app/api/auth/login/
