@@ -47,6 +47,7 @@ urlpatterns = [
     path('api/inventario/', include('apps.inventario.urls')),
     path('api/cultivos/', include('apps.cultivos.urls')),
     path('api/sensores/', include('apps.sensores.urls')),
+    path('api/datainspector/', include('apps.datainspector.urls')),
 
     # Swagger
     path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="swagger-ui"),
