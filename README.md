@@ -73,7 +73,8 @@
 
 ## 📦 Requisitos Previos
 
-- **Python 3.8+**
+- **Python 3.12
+- pip install --upgrade setuptools ( obligatorio en pruevas locales )
 - **pip** (gestor de paquetes Python)
 - **Git**
 - **Base de datos en la nube** (PostgreSQL/MySQL) para producción
