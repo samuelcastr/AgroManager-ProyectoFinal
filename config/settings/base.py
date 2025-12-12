@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'apps.cultivos',
     'apps.inventario',
     'apps.sensores',
+    'apps.datainspector',
 
     # Terceros
     'rest_framework',
