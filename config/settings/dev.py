@@ -5,6 +5,7 @@ from .base import *
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
+
 # Development database: SQLite (simple para desarrollo)
 # Si necesitas MySQL, descomentar y configurar
 # DATABASES = {
@@ -13,6 +14,7 @@ ALLOWED_HOSTS = ['*']
 #         'NAME': os.path.join(os.path.dirname(BASE_DIR), 'db.sqlite3'),
 #     }
 # }
+
 
 # Email backend para desarrollo (console - muestra en terminal)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
