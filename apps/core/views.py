@@ -174,23 +174,24 @@ class AuditLogViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class RegisterAPIView(APIView):
-    """API endpoint para registro de nuevo usuario"""
+    """API endpoint para registro de nuevo usuario con rol"""
     permission_classes = [AllowAny]
     
     @swagger_auto_schema(
-        operation_description='Crear nuevo usuario con registro',
+        operation_description='Crear nuevo usuario con rol asignado',
         request_body=RegisterSerializer,
         responses={
-            201: openapi.Response(description='Usuario registrado exitosamente'),
-            400: openapi.Response(description='Datos inválidos')
+            201: openapi.Response(description='Usuario registrado exitosamente con rol'),
+            400: openapi.Response(description='Datos inválidos o incompletos')
         }
     )
     def post(self, request, *args, **kwargs):
-        """Crear nuevo usuario"""
+        """Crear nuevo usuario con rol especificado"""
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            logger.info(f"Nuevo usuario registrado: {user.username}")
+            profile = user.profile
+            logger.info(f"Nuevo usuario registrado: {user.username} con rol: {profile.role}")
             return Response({
                 'message': 'Usuario registrado exitosamente',
                 'user': {
@@ -199,17 +200,29 @@ class RegisterAPIView(APIView):
                     'email': user.email,
                     'first_name': user.first_name,
                     'last_name': user.last_name,
+                    'role': profile.role,
+                    'phone': profile.phone,
                 }
             }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def get(self, request, *args, **kwargs):
         """Retornar información sobre el endpoint"""
+        from apps.core.models import UserProfile
+        role_options = [{'value': role[0], 'label': role[1]} for role in UserProfile.ROLE_CHOICES]
+        
         return Response({
             'endpoint': '/api/auth/register/',
             'method': 'POST',
-            'description': 'Registrar nuevo usuario',
-            'required_fields': ['username', 'email', 'password', 'password2', 'first_name', 'last_name'],
+            'description': 'Registrar nuevo usuario con rol asignado',
+            'required_fields': ['username', 'email', 'password', 'password2', 'first_name', 'last_name', 'role'],
+            'optional_fields': ['phone'],
+            'available_roles': role_options,
+            'password_requirements': {
+                'min_length': 8,
+                'must_include': ['uppercase', 'lowercase', 'numbers', 'special_symbols'],
+                'special_symbols': '!@#$%^&*()_+-=[]{}|;:,.<>?'
+            }
         })
 
 

@@ -74,7 +74,7 @@ class AuditLogSerializer(serializers.ModelSerializer):
 
 
 class RegisterSerializer(serializers.ModelSerializer):
-    """Serializer para registro de nuevo usuario con validación detallada"""
+    """Serializer para registro de nuevo usuario con rol y validación detallada"""
     password = serializers.CharField(
         write_only=True, 
         required=True, 
@@ -89,10 +89,20 @@ class RegisterSerializer(serializers.ModelSerializer):
         help_text='Debe coincidir exactamente con la contraseña anterior'
     )
     email = serializers.EmailField(required=True, help_text='Formato válido: usuario@dominio.com')
+    role = serializers.ChoiceField(
+        choices=UserProfile.ROLE_CHOICES,
+        required=True,
+        help_text='Rol del usuario: admin, agricultor, distribuidor, tecnico, usuario'
+    )
+    phone = serializers.CharField(
+        required=False,
+        allow_blank=True,
+        help_text='Número de teléfono (formato: +XX XXXXXXXXXX)'
+    )
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'password2', 'first_name', 'last_name']
+        fields = ['username', 'email', 'password', 'password2', 'first_name', 'last_name', 'role', 'phone']
         extra_kwargs = {
             'username': {
                 'required': True,
@@ -130,17 +140,23 @@ class RegisterSerializer(serializers.ModelSerializer):
         """Validar nombre"""
         if not value or len(value.strip()) < 2:
             raise serializers.ValidationError('El nombre debe tener mínimo 2 caracteres.')
-        if not value.isalpha():
-            raise serializers.ValidationError('El nombre solo puede contener letras.')
-        return value.strip()
+        if not value.replace(' ', '').isalpha():
+            raise serializers.ValidationError('El nombre solo puede contener letras y espacios.')
+        return value.strip().title()
 
     def validate_last_name(self, value):
         """Validar apellido"""
         if not value or len(value.strip()) < 2:
             raise serializers.ValidationError('El apellido debe tener mínimo 2 caracteres.')
-        if not value.isalpha():
-            raise serializers.ValidationError('El apellido solo puede contener letras.')
-        return value.strip()
+        if not value.replace(' ', '').isalpha():
+            raise serializers.ValidationError('El apellido solo puede contener letras y espacios.')
+        return value.strip().title()
+
+    def validate_phone(self, value):
+        """Validar teléfono"""
+        if value and not value.replace('+', '').replace('-', '').replace(' ', '').isdigit():
+            raise serializers.ValidationError('El teléfono debe contener solo números, +, - y espacios.')
+        return value
 
     def validate_password(self, value):
         """Validar contraseña con mensajes claros"""
@@ -148,35 +164,19 @@ class RegisterSerializer(serializers.ModelSerializer):
         
         if len(value) < 8:
             errors.append('Mínimo 8 caracteres (actual: {})'.format(len(value)))
-        
         if not any(c.isupper() for c in value):
-            errors.append('Debe incluir al menos una mayúscula (A-Z)')
-        
+            errors.append('Debe incluir al menos una MAYÚSCULA')
         if not any(c.islower() for c in value):
-            errors.append('Debe incluir al menos una minúscula (a-z)')
-        
+            errors.append('Debe incluir al menos una minúscula')
         if not any(c.isdigit() for c in value):
-            errors.append('Debe incluir al menos un número (0-9)')
+            errors.append('Debe incluir al menos un NÚMERO (0-9)')
         
-        if not any(c in '!@#$%^&*()_+-=[]{}|;:,.<>?' for c in value):
-            errors.append('Debe incluir al menos un símbolo (!@#$%^&*...)')
-        
-        if value.isdigit():
-            errors.append('No puede ser completamente numérica')
-        
-        if value.lower() == value:
-            errors.append('No puede ser completamente minúscula')
-        
-        # Validadores de Django adicionales
-        try:
-            validate_password(value)
-        except ValidationError as e:
-            for msg in e.messages:
-                if msg not in errors:
-                    errors.append(msg)
+        special_chars = set('!@#$%^&*()_+-=[]{}|;:,.<>?')
+        if not any(c in special_chars for c in value):
+            errors.append('Debe incluir al menos un SÍMBOLO especial (!@#$%^&*etc)')
         
         if errors:
-            raise serializers.ValidationError('Contraseña débil: ' + ' | '.join(errors))
+            raise serializers.ValidationError('Contraseña insegura: ' + '; '.join(errors))
         
         return value
 
@@ -191,17 +191,23 @@ class RegisterSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, validated_data):
-        """Crear usuario y su perfil"""
+        """Crear usuario y su perfil con rol especificado"""
         validated_data.pop('password2')  # Remover confirmación
         password = validated_data.pop('password')
+        role = validated_data.pop('role')
+        phone = validated_data.pop('phone', None)
         
         # Crear usuario
         user = User.objects.create_user(**validated_data)
         user.set_password(password)
         user.save()
         
-        # Crear perfil automáticamente
-        UserProfile.objects.create(user=user)
+        # Crear perfil con rol automáticamente
+        UserProfile.objects.create(
+            user=user,
+            role=role,
+            phone=phone
+        )
         
         return user
 
