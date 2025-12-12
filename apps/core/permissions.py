@@ -2,6 +2,173 @@ from rest_framework import permissions
 from apps.core.models import UserProfile
 
 
+# MAPEO DE ROLES A PERMISOS
+ROLE_PERMISSIONS_MAP = {
+    'admin': {
+        'description': 'Administrador del sistema',
+        'permissions': [
+            'cultivos.list',
+            'cultivos.create',
+            'cultivos.update',
+            'cultivos.delete',
+            'inventario.list',
+            'inventario.create',
+            'inventario.update',
+            'inventario.delete',
+            'sensores.list',
+            'sensores.create',
+            'sensores.update',
+            'sensores.delete',
+            'usuarios.list',
+            'usuarios.update',
+        ]
+    },
+    'agricultor': {
+        'description': 'Agricultor - Gestiona cultivos',
+        'permissions': [
+            'cultivos.list',       # Ver cultivos
+            'cultivos.create',     # Crear cultivos
+            'cultivos.update',     # Editar sus cultivos
+            'cultivos.delete',     # Eliminar sus cultivos
+            'sensores.list',       # Ver sensores
+            'sensores.create',     # Crear sensores para cultivos
+            'inventario.list',     # Ver inventario (lectura)
+        ]
+    },
+    'distribuidor': {
+        'description': 'Distribuidor - Gestiona inventario',
+        'permissions': [
+            'inventario.list',
+            'inventario.create',
+            'inventario.update',
+            'inventario.delete',
+            'sensores.list',       # Ver sensores
+        ]
+    },
+    'tecnico': {
+        'description': 'Tecnico - Gestiona sensores',
+        'permissions': [
+            'sensores.list',
+            'sensores.create',
+            'sensores.update',
+            'sensores.delete',
+            'sensores.read_realtime',
+            'cultivos.list',       # Ver cultivos (lectura)
+        ]
+    },
+    'usuario': {
+        'description': 'Usuario regular - Acceso limitado',
+        'permissions': [
+            'cultivos.list',       # Solo lectura
+            'inventario.list',     # Solo lectura
+            'sensores.list',       # Solo lectura
+        ]
+    }
+}
+
+
+def get_role_permissions(role):
+    """
+    Obtener lista de permisos para un rol específico
+    
+    Args:
+        role: El rol del usuario (admin, agricultor, etc.)
+    
+    Returns:
+        dict con 'description' y 'permissions' list
+    """
+    return ROLE_PERMISSIONS_MAP.get(role, {'description': 'Sin rol', 'permissions': []})
+
+
+class HasRolePermission(permissions.BasePermission):
+    """
+    Permiso personalizado que valida si el usuario tiene el permiso requerido
+    basado en su rol.
+    
+    Uso en vistas:
+        permission_classes = [IsAuthenticated, HasRolePermission]
+        required_permission = 'cultivos.create'  # En la vista
+    """
+    
+    def has_permission(self, request, view):
+        """Verificar si el usuario tiene permiso para acceder a la vista"""
+        # Obtener el usuario
+        if not request.user or not request.user.is_authenticated:
+            return False
+        
+        # Obtener el rol del usuario
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+            role = profile.role
+        except UserProfile.DoesNotExist:
+            return False
+        
+        # Obtener los permisos requeridos de la vista
+        required_permission = getattr(view, 'required_permission', None)
+        
+        # Si la vista no especifica permiso requerido, permitir
+        if not required_permission:
+            return True
+        
+        # Obtener los permisos del rol
+        role_perms = get_role_permissions(role)
+        permissions_list = role_perms.get('permissions', [])
+        
+        # Verificar si el usuario tiene el permiso
+        return required_permission in permissions_list
+
+
+def check_role_permission(permission_string):
+    """
+    Decorador que asigna el permiso requerido a una vista.
+    
+    Uso:
+        @check_role_permission('cultivos.create')
+        def post(self, request):
+            ...
+    """
+    def decorator(view_func):
+        def wrapper(self, request, *args, **kwargs):
+            # Obtener el usuario
+            if not request.user or not request.user.is_authenticated:
+                from rest_framework.response import Response
+                from rest_framework import status
+                return Response(
+                    {'detail': 'Requiere autenticacion'},
+                    status=status.HTTP_401_UNAUTHORIZED
+                )
+            
+            # Obtener el rol
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                role = profile.role
+            except UserProfile.DoesNotExist:
+                from rest_framework.response import Response
+                from rest_framework import status
+                return Response(
+                    {'detail': 'Usuario sin rol asignado'},
+                    status=status.HTTP_403_FORBIDDEN
+                )
+            
+            # Verificar permiso
+            role_perms = get_role_permissions(role)
+            permissions_list = role_perms.get('permissions', [])
+            
+            if permission_string not in permissions_list:
+                from rest_framework.response import Response
+                from rest_framework import status
+                return Response(
+                    {'detail': f'No tiene permiso para {permission_string}'},
+                    status=status.HTTP_403_FORBIDDEN
+                )
+            
+            # Permitir acceso
+            return view_func(self, request, *args, **kwargs)
+        
+        return wrapper
+    return decorator
+
+
 class IsAdminOrReadOnly(permissions.BasePermission):
     """
     Permiso que permite:

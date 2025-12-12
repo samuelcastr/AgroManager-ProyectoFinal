@@ -8,11 +8,13 @@ from rest_framework.permissions import IsAuthenticated
 
 from .models import Cultivo, CicloSiembra
 from .serializers import CultivoSerializer, CicloSerializer
+from apps.core.permissions import HasRolePermission
 
 
 class TiposViewSet(viewsets.ViewSet):
     """ViewSet para retornar tipos de cultivos disponibles con estadísticas"""
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasRolePermission]
+    required_permission = 'cultivos.list'
     
     def list(self, request):
         tipos = Cultivo.TIPOS_CULTIVO
@@ -35,13 +37,30 @@ class TiposViewSet(viewsets.ViewSet):
 
 
 class CultivoViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasRolePermission]
     
     queryset = Cultivo.objects.all().order_by('-created_at')
     serializer_class = CultivoSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = ['tipo', 'variedad__nombre']
     search_fields = ['nombre', 'tipo', 'variedad__nombre']
+    
+    def get_required_permission(self):
+        """Obtener permiso requerido según la acción"""
+        if self.action == 'list' or self.action == 'retrieve':
+            return 'cultivos.list'
+        elif self.action == 'create':
+            return 'cultivos.create'
+        elif self.action in ['update', 'partial_update']:
+            return 'cultivos.update'
+        elif self.action == 'destroy':
+            return 'cultivos.delete'
+        return 'cultivos.list'
+    
+    def check_permissions(self, request):
+        """Override para establecer el permiso requerido dinámicamente"""
+        self.required_permission = self.get_required_permission()
+        super().check_permissions(request)
 
     @action(detail=True, methods=['get'])
     def rendimiento_estimado(self, request, pk=None):

@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.db import transaction
 from django.core.exceptions import ValidationError
+from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -10,11 +11,13 @@ from rest_framework.permissions import IsAuthenticated
 
 from .models import Insumo, Lote, MovimientoStock, registrar_salida_stock
 from .serializers import InsumoAlertSerializer, AjusteMasivoSerializer, MovimientoStockSerializer, InsumoSerializer, LoteSerializer
+from apps.core.permissions import HasRolePermission
 
 
 class AlertasStockAPIView(APIView):
 	"""Retorna insumos cuyo stock total está por debajo o igual al stock mínimo."""
-	permission_classes = [IsAuthenticated]
+	permission_classes = [IsAuthenticated, HasRolePermission]
+	required_permission = 'inventario.list'
 
 	def get(self, request):
 		insumos = Insumo.objects.all()
@@ -40,8 +43,11 @@ class AjusteMasivoAPIView(APIView):
 	- ENTRADA: crea un nuevo Lote con la cantidad indicada y registra MovimientoStock
 	- SALIDA: utiliza `registrar_salida_stock` (FIFO) y registra MovimientoStock
 	- AJUSTE: registra un MovimientoStock y ajusta el primer lote disponible (si es negativo)
+	
+	NOTA: CSRF exempt porque usa autenticación JWT (no cookies)
 	"""
-	permission_classes = [IsAuthenticated]
+	permission_classes = [IsAuthenticated, HasRolePermission]
+	required_permission = 'inventario.create'
 
 	def post(self, request):
 		serializer = AjusteMasivoSerializer(data=request.data)
@@ -102,18 +108,69 @@ class AjusteMasivoAPIView(APIView):
 
 # ViewSets para los modelos principales
 class InsumoViewSet(viewsets.ModelViewSet):
-	permission_classes = [IsAuthenticated]
+	permission_classes = [IsAuthenticated, HasRolePermission]
 	queryset = Insumo.objects.all()
 	serializer_class = InsumoSerializer
+	
+	def get_required_permission(self):
+		"""Obtener permiso requerido según la acción"""
+		if self.action == 'list' or self.action == 'retrieve':
+			return 'inventario.list'
+		elif self.action == 'create':
+			return 'inventario.create'
+		elif self.action in ['update', 'partial_update']:
+			return 'inventario.update'
+		elif self.action == 'destroy':
+			return 'inventario.delete'
+		return 'inventario.list'
+	
+	def check_permissions(self, request):
+		"""Override para establecer el permiso requerido dinámicamente"""
+		self.required_permission = self.get_required_permission()
+		super().check_permissions(request)
 
 
 class LoteViewSet(viewsets.ModelViewSet):
-	permission_classes = [IsAuthenticated]
+	permission_classes = [IsAuthenticated, HasRolePermission]
 	queryset = Lote.objects.all()
 	serializer_class = LoteSerializer
+	
+	def get_required_permission(self):
+		"""Obtener permiso requerido según la acción"""
+		if self.action == 'list' or self.action == 'retrieve':
+			return 'inventario.list'
+		elif self.action == 'create':
+			return 'inventario.create'
+		elif self.action in ['update', 'partial_update']:
+			return 'inventario.update'
+		elif self.action == 'destroy':
+			return 'inventario.delete'
+		return 'inventario.list'
+	
+	def check_permissions(self, request):
+		"""Override para establecer el permiso requerido dinámicamente"""
+		self.required_permission = self.get_required_permission()
+		super().check_permissions(request)
 
 
 class MovimientoStockViewSet(viewsets.ModelViewSet):
-	permission_classes = [IsAuthenticated]
+	permission_classes = [IsAuthenticated, HasRolePermission]
 	queryset = MovimientoStock.objects.all()
 	serializer_class = MovimientoStockSerializer
+	
+	def get_required_permission(self):
+		"""Obtener permiso requerido según la acción"""
+		if self.action == 'list' or self.action == 'retrieve':
+			return 'inventario.list'
+		elif self.action == 'create':
+			return 'inventario.create'
+		elif self.action in ['update', 'partial_update']:
+			return 'inventario.update'
+		elif self.action == 'destroy':
+			return 'inventario.delete'
+		return 'inventario.list'
+	
+	def check_permissions(self, request):
+		"""Override para establecer el permiso requerido dinámicamente"""
+		self.required_permission = self.get_required_permission()
+		super().check_permissions(request)

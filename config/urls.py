@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.decorators.csrf import csrf_exempt
 from config.swagger import schema_view
 
 from rest_framework_simplejwt.views import (
@@ -36,12 +37,12 @@ urlpatterns = [
     # Core API
     path("api/core/", include("apps.core.urls")),
 
-    # Autenticación JWT
-    path("api/auth/login/", CustomTokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("api/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    path("api/auth/register/", RegisterAPIView.as_view(), name="register"),
-    path("api/auth/password-reset/", RequestPasswordResetAPIView.as_view(), name="password_reset_request"),
-    path("api/auth/password-reset-confirm/", ConfirmPasswordResetAPIView.as_view(), name="password_reset_confirm"),
+    # Autenticación JWT - CSRF exempt porque usa tokens JWT
+    path("api/auth/login/", csrf_exempt(CustomTokenObtainPairView.as_view()), name="token_obtain_pair"),
+    path("api/auth/refresh/", csrf_exempt(TokenRefreshView.as_view()), name="token_refresh"),
+    path("api/auth/register/", csrf_exempt(RegisterAPIView.as_view()), name="register"),
+    path("api/auth/password-reset/", csrf_exempt(RequestPasswordResetAPIView.as_view()), name="password_reset_request"),
+    path("api/auth/password-reset-confirm/", csrf_exempt(ConfirmPasswordResetAPIView.as_view()), name="password_reset_confirm"),
 
     # Apps adicionales
     path('api/inventario/', include('apps.inventario.urls')),
